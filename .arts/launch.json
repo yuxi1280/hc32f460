@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "PyOCD Debug",  // 调试配置名称，可自定义
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/obj/EPC_DCBM.elf",  // 替换为你的 ELF 可执行文件路径
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "pyocd",  // 指定使用 pyocd 作为调试服务器
+            "target": "hc32f460xe",  // 替换为你的芯片型号（如 nrf52840、stm32f407）
+            "device": "hc32f460xe",  // 与 target 保持一致
+            "interface": "swd",  // 调试接口，通常用 SWD（比 JTAG 更常用）
+            "pyocdPath": "pyocd",  // pyocd 可执行文件路径（默认已加入 PATH 则无需修改）
+            "runToEntryPoint": "main",  // 调试启动后自动运行到 main 函数
+            "stopAtEntry": false,  // 是否在程序入口处停止（false 则直接到 main）
+            "serverTimeout": 30000,
+            "gdbPort": 50000,
+            "telnetPort": 50001,
+            "pyocdArgs": ["--no-auto-select"],
+            "showDevDebugOutput": "verbose",
+            "svdFile": "${workspaceFolder}/sys/HC32F460.svd",  // 可选：SVD 文件路径，用于查看寄存器
+            "configFiles": [],  // 可选：pyocd 配置文件路径
+            "showDevDebugOutput": "none"  // 调试输出级别（none/verbose）
+        },
+        {
+            "name": "PyOCD Debug (Attach)",
+            "request": "attach",  // 改为attach模式，不启动新的pyocd
+            "type": "cortex-debug",
+            "servertype": "external",  // 连接外部已运行的gdbserver
+            "gdbTarget": "localhost:50000",  // 连接手动启动的pyocd端口
+            "executable": "${workspaceFolder}/obj/EPC_DCBM.elf",
+            "showDevDebugOutput": "verbose"
+        }
+    ]
+}
