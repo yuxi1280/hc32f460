@@ -81,11 +81,12 @@ void io_init(void)
 	//蜂鸣器
 	CM_GPIO->PCRA6 = 0x0052u;
 	//温度采集
-	CM_GPIO->PCRB6 = 0x0040u;
+	CM_GPIO->PCRA5 = 0x0040u;//ADC12_IN5
+	CM_GPIO->PFSRA5 = 0x00u;
 	//CM_GPIO->PFSRB6 = 0x0040u; 
 
 	//电压采样
-	CM_GPIO->PCRA0 = 0x0040u;
+	CM_GPIO->PCRA0 = 0x0040u;//ADC1_IN0
 	CM_GPIO->PFSRA0 = 0X00u;
 
 	//I2C1_SDA

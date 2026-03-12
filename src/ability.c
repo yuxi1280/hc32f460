@@ -84,28 +84,3 @@ void voltage_overload(void)
     }
 }
 
-void pwmfly_init(void)//风扇
-{
-    CM_PWC->FCG2 &= ~(1 << 5); 
-    CM_TMRA_4->BCSTRL = 0x52u;
-    CM_TMRA_4->BCSTRH = 0x00u;
-    CM_TMRA_4->CNTER = 0u;
-    CM_TMRA_4->PERAR = 125u;
-
-    CM_TMRA_4->CMPAR4 = 0u;
-    CM_TMRA_4->PCONR4 = 0x1043u;
-    bCM_TMRA_4->BCSTRL_b.START = 1u;    
-}
-
-void pwmfly_set_pwm(uint16_t duty)
-{
-    if (duty <= 0){
-        CM_TMRA_4->PCONR4 = 0x1243u;
-    } else if (duty >= 125){
-        CM_TMRA_4->PCONR4 = 0x1343u;
-    } else {
-        CM_TMRA_4->CMPAR4 = duty;
-        CM_TMRA_4->PCONR4 = 0x1043u;
-    }
-    
-}

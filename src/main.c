@@ -9,7 +9,15 @@
 #include "pid_pos.h"
 #include "soft_timer.h"
 #include "ability.h"
+#include "hot.h"
+#include "i2c.h"
 
+/*机器人端屏蔽
+pwmfly_init,
+temperature_into,
+temperature_overload,
+voltage_init,
+*/
 void _pid_update(void)
 {
 	static uint8_t step = 0;
@@ -28,7 +36,7 @@ int main(void)
 	ability_init();
 	voltage_init();
 	WDT_init();	
-	//ds18b20_init();
+	temperature_into();
 	//pwmled_init();
 	lr_init();
 	lr_receive_init();
@@ -61,6 +69,7 @@ int main(void)
 
 		WDT_flash();
 		stimer_poll();
+		temperature_overload();
 		Relay();//充电站
 		inquire();//询问
 		//lr_robot();

@@ -16,8 +16,7 @@
 /*
 看门狗(写了一半)
 i2c
-测温(暂时写不了)
-风扇还没加入主程序
+测温(写了一半)
 */
 
 #define lr_nec_tall() do{ CM_TMRA_4->CMPAR4 =  82; CM_TMRA_4->PCONR4 = 0x1043u; } while(0)//低位

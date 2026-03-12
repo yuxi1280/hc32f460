@@ -9,6 +9,8 @@ typedef struct {
 	uint8_t valid;
 } lr_data_t;
 
+
+
 void lr_init(void);
 void lr_receive_init(void); 
 void lr_nec( uint8_t addr, uint8_t cmd);//发射
