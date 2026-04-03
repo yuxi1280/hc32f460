@@ -51,6 +51,8 @@ uint16_t temperature_get(void)//温度
     return res;
 }
 
+//float temperature_get()
+
 void temperature_overload(void)
 {
     float hot = temperature_get();
@@ -64,7 +66,7 @@ void temperature_overload(void)
     }
     else
     {
-        pwmfly_set_pwm(60);
+        pwmfly_set_pwm(50);
     }
     
 }

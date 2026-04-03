@@ -2,6 +2,7 @@
 #include "system_hc32f460.h"
 #include <stdio.h>
 #include "ws2812.h"
+#include "ability.h"
 //lr_nec(0xAA, 0x11);  到位
 //lr_nec(0xAA, 0x12);  校准
 //lr_nec(0xAA, 0x13);  精确
@@ -14,9 +15,9 @@
 
 
 /*
-看门狗(写了一半)
+看门狗
 i2c
-测温(写了一半)
+测温
 */
 
 #define lr_nec_tall() do{ CM_TMRA_4->CMPAR4 =  82; CM_TMRA_4->PCONR4 = 0x1043u; } while(0)//低位
@@ -32,9 +33,9 @@ static volatile uint8_t lr_rx_ready = 0;//接收完成标志
 static volatile uint64_t lr_rx_last_time = 0;//上次捕获时间，用于计算脉冲宽度
 static volatile uint8_t lr_rx_level = 1;//当前电平状态，1表示高电平，0表示低电平
 static volatile uint8_t state=0;//状态机
-//0空闲1在充电2充电完成3重定位4询问5询问回复
+//0空闲1在充电2充电完成3重定位
 static  volatile uint8_t robote_state = 0;
-//0空闲1在充电2充电完成3重定位4准备充电
+//0空闲1在充电2充电完成3重定位
 static volatile uint8_t last_receive_time = 0;
 
 
@@ -243,10 +244,13 @@ uint8_t lr_get_data(lr_data_t *data)
 //lr_nec(0xAA, 0xFF);  重定位
 //lr_nec(0xAA, 0xAA);  完成 
 //lr_nec(0xAA, 0x55);  询问
+//lr_nec(0xAA, 0x56);  询问回复
 // CM_GPIO->PCRA1 = 0x0053u;//继电器1open+    0x0002
 // CM_GPIO->PCRA2 = 0x0053u;//继电器1close+   0x0004
 // CM_GPIO->PCRA3 = 0x0053u;//继电器2open-    0x0008
 // CM_GPIO->PCRA4 = 0x0053u;//继电器2close-   0x0010
+
+//充电站端
 void Relay (void)
 {
     if (lr_get_data(&lr_data)) {
@@ -260,23 +264,28 @@ void Relay (void)
                     break;
                 case 0x13:
                     //精确
-                    CM_GPIO->PORRA = 0x0004 | 0x0010;
-					sys_delay_ms(10);
-                    CM_GPIO->POSRA = 0x0008 | 0x0002;
-                    sys_delay_ms(10);
+                    CM_GPIO->PORRA = 0x0004 | 0x0010 | 0x0008 | 0x0002;	
+					sys_delay_ms(1);
+                    CM_GPIO->POSRA = 0x0008;
+                    sys_delay_ms(1);
                     CM_GPIO->PORRA = 0x0008;
-                    CM_GPIO->PORRC = 0x2000;
+					CM_GPIO->POSRA = 0x0002;
+					sys_delay_ms(1);
+					CM_GPIO->PORRA = 0x0002;
+
 					last_heartbeat_time = sys_get_tick();
 					state = 1;
                     break;
+				case 0xFF:
+					state = 3;
+					break;
                 case 0xAA:
                     //完成
-					CM_GPIO->POSRA = 0x0040;
                     CM_GPIO->PORRA = 0x0008 | 0x0002;
                     CM_GPIO->POSRA = 0x0004 | 0x0010;
-                    sys_delay_ms(100);
-                    CM_GPIO->PORRA = 0x0004 | 0x0010 | 0x0040;
-					sys_delay_ms(500);
+                    sys_delay_ms(1);
+                    CM_GPIO->PORRA = 0x0004 | 0x0010;
+					sys_delay_ms(100);
 					state = 2;
                     break;
 				case 0x56:
@@ -287,23 +296,16 @@ void Relay (void)
 					
 					break;
             }
-        }
+        }	
         
     } 
     
 }
 
-
-
-void inquire (void)//询问
+void inquire (void)
 	{
 		static uint64_t last_send_time = 0;
 		uint64_t now = sys_get_tick();
-		if (state == 0)
-		{
-			lr_init();
-			lr_receive_init();
-		}
 		
 		if (state == 1)
 		{
@@ -325,14 +327,101 @@ void inquire (void)//询问
 		else if (state == 3)
 		{
 			lr_nec(0xAA, 0xFF);
-			CM_GPIO->POSRA = 0x0004 | 0x0010;
-			sys_delay_ms(10);
-			CM_GPIO->PORRA = 0x0008 | 0x0002 | 0x0004 | 0x0010;
 			CM_GPIO->POSRA = 0x0040;
-            sys_delay_ms(100);
+			ability_init();
+            sys_delay_ms(10);
             CM_GPIO->PORRA = 0x0040;
+			lr_init();
+			lr_receive_init();
 			state = 0;
 		}
 	}
+
+
+
+
+
+
+//机器人端
+lr_data_t lr_robot_data;
+//0空闲1准备充电2心跳进行3重定位
+
+void lr_robot(void)
+{
+	if (lr_get_data(&lr_robot_data)) {
+		if (lr_robot_data.addr == 0xAA)
+		{
+			switch (lr_robot_data.cmd)
+			{
+				case 0x12:
+                CM_GPIO->PORRA = 0x0004 | 0x0010 | 0x0008 | 0x0002;	
+				sys_delay_ms(1);
+                CM_GPIO->POSRA = 0x0008;
+                sys_delay_ms(1);
+                CM_GPIO->PORRA = 0x0008;
+				CM_GPIO->POSRA = 0x0002;
+				sys_delay_ms(1);
+				CM_GPIO->PORRA = 0x0002;
+				last_heartbeat_time = sys_get_tick();
+				lr_nec(0xAA, 0x13);
+				robote_state = 1;
+				break; 
+				case 0xFF:
+				robote_state = 3;
+				break;
+				case 0x55:
+                last_heartbeat_time = sys_get_tick();
+				break;
+			}
+		}
+		
+	}
+}
+
+//lr_nec(0xAA, 0x11);  到位
+//lr_nec(0xAA, 0x12);  校准
+//lr_nec(0xAA, 0x13);  精确
+//lr_nec(0xAA, 0xFF);  重定位
+//lr_nec(0xAA, 0xAA);  完成 
+//lr_nec(0xAA, 0x55);  询问
+//lr_nec(0xAA, 0x56);  询问回复
+// CM_GPIO->PCRA1 = 0x0053u;//继电器1open+    0x0002
+// CM_GPIO->PCRA2 = 0x0053u;//继电器1close+   0x0004
+// CM_GPIO->PCRA3 = 0x0053u;//继电器2open-    0x0008
+// CM_GPIO->PCRA4 = 0x0053u;//继电器2close-   0x0010
+
+void Relay_robot(void)
+{ 
+	static uint64_t last_send_time = 0;
+	uint64_t now = sys_get_tick();
+
+    if (robote_state == 1)
+    {
+        if (now - last_send_time >= 10000 )
+        {
+            lr_nec(0xAA, 0x56);
+			last_send_time = now;
+
+        }
+		if(now - last_heartbeat_time >= HEARTBEAT_TIMEOUT_TICK)
+		{
+			robote_state = 3;
+		}
+
+	}
+	else if (robote_state == 3)
+	{
+		lr_nec(0xAA, 0xFF);
+		ability_init();
+		sys_delay_ms(1);
+		lr_init();
+		lr_receive_init();
+		robote_state = 0;
+	}
+}   
+
+
+
+
 
 

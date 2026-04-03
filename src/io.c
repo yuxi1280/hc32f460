@@ -90,9 +90,12 @@ void io_init(void)
 	CM_GPIO->PFSRA0 = 0X00u;
 
 	//I2C1_SDA
-	CM_GPIO->PFSRA9 = 48u; //I2C1_SDA
+	CM_GPIO -> PFSRA9 = 48u; //I2C1_SDA
 	//I2C1_SCL
-	CM_GPIO->PFSRA8 = 49u; //I2C1_SCL
+	CM_GPIO -> PFSRA8 = 49u; //I2C1_SCL
+	CM_GPIO -> PCRA8 = 0x0056u;
+	CM_GPIO -> PCRA9 = 0x0056u;
+
 
 
 

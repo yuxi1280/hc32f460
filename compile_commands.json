@@ -1696,11 +1696,11 @@
    "-I../inc",
    "-I../sys",
    "-I../sys/cmsis/core/inc",
-   "../src/lr_robot.c",
+   "../src/i2cmaster.c",
    "-c",
    "-o",
-   "../obj/lr_robot.o"
+   "../obj/i2cmaster.o"
   ],
-  "file": "../src/lr_robot.c"
+  "file": "../src/i2cmaster.c"
  }
 ]

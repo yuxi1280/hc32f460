@@ -33,6 +33,9 @@ void ability_init(void)
         0x0008u | 
         0x0040u |
         0x0002u;  
+    CM_GPIO->POSRA = 0x0004 | 0x0010;
+    sys_delay_ms(1);
+    CM_GPIO->PORRA = 0x0004 | 0x0010;
 }
 
 
