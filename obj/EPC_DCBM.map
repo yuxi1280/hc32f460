@@ -14,12 +14,8 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/ability.o
  .data          0x00000000        0x0 ../obj/ability.o
  .bss           0x00000000        0x0 ../obj/ability.o
- .text.voltage_get_adc
-                0x00000000       0x40 ../obj/ability.o
- .text.voltage_get
-                0x00000000       0x68 ../obj/ability.o
- .text.voltage_overload
-                0x00000000       0x90 ../obj/ability.o
+ .text.ability_robote_init
+                0x00000000       0x2c ../obj/ability.o
  .text          0x00000000        0x0 ../obj/at24c02.o
  .data          0x00000000        0x0 ../obj/at24c02.o
  .bss           0x00000000        0x0 ../obj/at24c02.o
@@ -124,76 +120,88 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/hot.o
  .data          0x00000000        0x0 ../obj/hot.o
  .bss           0x00000000        0x0 ../obj/hot.o
- .text.temperature_into
-                0x00000000       0x58 ../obj/hot.o
- .text.pwmfly_set_pwm
-                0x00000000       0x50 ../obj/hot.o
- .text.temperature_get
-                0x00000000       0x40 ../obj/hot.o
- .text.temperature_overload
-                0x00000000       0x74 ../obj/hot.o
- .text          0x00000000        0x0 ../obj/i2c.o
- .data          0x00000000        0x0 ../obj/i2c.o
- .bss           0x00000000        0x0 ../obj/i2c.o
- .text.i2c_init
-                0x00000000       0x68 ../obj/i2c.o
- .text.i2c_read_byte
-                0x00000000       0x44 ../obj/i2c.o
- .text.i2c_write_byte
-                0x00000000       0x4c ../obj/i2c.o
- .text.i2c_check_addr
-                0x00000000       0x2c ../obj/i2c.o
- .text.i2c_check_stop
-                0x00000000       0x2c ../obj/i2c.o
+ .text          0x00000000        0x0 ../obj/i2c_slave.o
+ .data          0x00000000        0x0 ../obj/i2c_slave.o
+ .bss           0x00000000        0x0 ../obj/i2c_slave.o
+ .bss.slave_status
+                0x00000000        0x1 ../obj/i2c_slave.o
+ .data.slave_cmd
+                0x00000000        0x1 ../obj/i2c_slave.o
+ .bss.slave_cmd_ready
+                0x00000000        0x1 ../obj/i2c_slave.o
+ .bss.ir_comm_state
+                0x00000000        0x1 ../obj/i2c_slave.o
+ .bss.last_ir_heartbeat
+                0x00000000        0x8 ../obj/i2c_slave.o
+ .text.i2c_slave_init
+                0x00000000       0xa0 ../obj/i2c_slave.o
+ .text.i2c_check_addr_match
+                0x00000000       0x2c ../obj/i2c_slave.o
+ .text.i2c_check_stop_cond
+                0x00000000       0x2c ../obj/i2c_slave.o
  .text.i2c_is_tx_mode
-                0x00000000       0x24 ../obj/i2c.o
- .text.i2c_enable
-                0x00000000       0x18 ../obj/i2c.o
- .text.i2c_disable
-                0x00000000       0x18 ../obj/i2c.o
- .text.i2c_waite
-                0x00000000        0xe ../obj/i2c.o
- .bss.low.1     0x00000000        0x2 ../obj/i2c.o
- .bss.hel.0     0x00000000        0x4 ../obj/i2c.o
- .debug_info    0x00000000      0xc8d ../obj/i2c.o
- .debug_abbrev  0x00000000      0x176 ../obj/i2c.o
+                0x00000000       0x24 ../obj/i2c_slave.o
+ .text.i2c_slave_recv_byte
+                0x00000000       0x44 ../obj/i2c_slave.o
+ .text.i2c_slave_send_byte
+                0x00000000       0x4c ../obj/i2c_slave.o
+ .text.i2c_slave_poll
+                0x00000000       0x5c ../obj/i2c_slave.o
+ .text.i2c_slave_ir_process
+                0x00000000      0x1a8 ../obj/i2c_slave.o
+ .text.i2c_slave_set_status
+                0x00000000       0x20 ../obj/i2c_slave.o
+ .text.i2c_slave_get_status
+                0x00000000       0x18 ../obj/i2c_slave.o
+ .bss.last_send_time.0
+                0x00000000        0x8 ../obj/i2c_slave.o
+ .debug_info    0x00000000     0x1a01 ../obj/i2c_slave.o
+ .debug_abbrev  0x00000000      0x270 ../obj/i2c_slave.o
  .debug_aranges
-                0x00000000       0x60 ../obj/i2c.o
+                0x00000000       0x68 ../obj/i2c_slave.o
  .debug_rnglists
-                0x00000000       0x43 ../obj/i2c.o
- .debug_line    0x00000000      0x293 ../obj/i2c.o
- .debug_str     0x00000000      0x693 ../obj/i2c.o
- .comment       0x00000000       0x46 ../obj/i2c.o
- .debug_frame   0x00000000      0x140 ../obj/i2c.o
+                0x00000000       0x4b ../obj/i2c_slave.o
+ .debug_line    0x00000000      0x3ba ../obj/i2c_slave.o
+ .debug_str     0x00000000      0xd7b ../obj/i2c_slave.o
+ .comment       0x00000000       0x46 ../obj/i2c_slave.o
+ .debug_frame   0x00000000      0x174 ../obj/i2c_slave.o
  .ARM.attributes
-                0x00000000       0x34 ../obj/i2c.o
+                0x00000000       0x34 ../obj/i2c_slave.o
  .text          0x00000000        0x0 ../obj/i2cmaster.o
  .data          0x00000000        0x0 ../obj/i2cmaster.o
  .bss           0x00000000        0x0 ../obj/i2cmaster.o
  .text.i2c_master_init
-                0x00000000       0x68 ../obj/i2cmaster.o
- .text.i2c_master_start
-                0x00000000       0x50 ../obj/i2cmaster.o
- .text.i2c_master_stop
+                0x00000000       0x54 ../obj/i2cmaster.o
+ .text.i2c_wait_bus_idle
+                0x00000000       0x3c ../obj/i2cmaster.o
+ .text.i2c_send_start
                 0x00000000       0x4c ../obj/i2cmaster.o
- .text.i2c_master_send_addr
+ .text.i2c_send_stop
+                0x00000000       0x18 ../obj/i2cmaster.o
+ .text.i2c_send_addr
                 0x00000000       0x7c ../obj/i2cmaster.o
- .text.i2c_master_write_byte
+ .text.i2c_send_data
                 0x00000000       0x68 ../obj/i2cmaster.o
- .text.i2c_master_read_byte
+ .text.i2c_recv_data
                 0x00000000       0x60 ../obj/i2cmaster.o
- .text.i2c_master_check_busy
-                0x00000000       0x24 ../obj/i2cmaster.o
- .debug_info    0x00000000      0xcb9 ../obj/i2cmaster.o
- .debug_abbrev  0x00000000      0x184 ../obj/i2cmaster.o
+ .text.i2c_master_send_cmd
+                0x00000000       0x6a ../obj/i2cmaster.o
+ .text.i2c_master_read_status
+                0x00000000       0x56 ../obj/i2cmaster.o
+ .text.i2c_master_cmd_and_read
+                0x00000000       0x48 ../obj/i2cmaster.o
+ .text.i2c_test
+                0x00000000        0xe ../obj/i2cmaster.o
+ .debug_info    0x00000000      0xd97 ../obj/i2cmaster.o
+ .debug_abbrev  0x00000000      0x1b7 ../obj/i2cmaster.o
  .debug_aranges
-                0x00000000       0x50 ../obj/i2cmaster.o
+                0x00000000       0x70 ../obj/i2cmaster.o
  .debug_rnglists
-                0x00000000       0x37 ../obj/i2cmaster.o
- .debug_line    0x00000000      0x2f1 ../obj/i2cmaster.o
- .debug_str     0x00000000      0x6a9 ../obj/i2cmaster.o
+                0x00000000       0x4f ../obj/i2cmaster.o
+ .debug_line    0x00000000      0x38f ../obj/i2cmaster.o
+ .debug_str     0x00000000      0x6f8 ../obj/i2cmaster.o
  .comment       0x00000000       0x46 ../obj/i2cmaster.o
- .debug_frame   0x00000000      0x118 ../obj/i2cmaster.o
+ .debug_frame   0x00000000      0x1a4 ../obj/i2cmaster.o
  .ARM.attributes
                 0x00000000       0x34 ../obj/i2cmaster.o
  .text          0x00000000        0x0 ../obj/io.o
@@ -211,16 +219,8 @@ Discarded input sections
  .bss.lr_data   0x00000000        0x3 ../obj/lr.o
  .text.lr_get_data
                 0x00000000       0x80 ../obj/lr.o
- .text.Relay    0x00000000       0xec ../obj/lr.o
- .text.inquire  0x00000000       0xcc ../obj/lr.o
- .bss.lr_robot_data
-                0x00000000        0x3 ../obj/lr.o
- .text.lr_robot
-                0x00000000       0xa8 ../obj/lr.o
- .text.Relay_robot
-                0x00000000       0xb0 ../obj/lr.o
- .bss.last_send_time.1
-                0x00000000        0x8 ../obj/lr.o
+ .text.Relay    0x00000000       0xe0 ../obj/lr.o
+ .text.inquire  0x00000000       0xbc ../obj/lr.o
  .bss.last_send_time.0
                 0x00000000        0x8 ../obj/lr.o
  .text          0x00000000        0x0 ../obj/main.o
@@ -543,30 +543,12 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/startup_hc32f460.o
  .data          0x00000000        0x0 ../obj/startup_hc32f460.o
  .bss           0x00000000        0x0 ../obj/startup_hc32f460.o
- .text          0x00000000      0x378 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_line_str
-                0x00000000       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00000000       0xac d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .ARM.attributes
-                0x00000000       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .text          0x00000000      0x424 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
  .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
  .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_line_str
-                0x00000000       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00000000       0x50 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .ARM.attributes
-                0x00000000       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .text          0x00000000       0xa0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_line_str
-                0x00000000       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00000000       0x24 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .ARM.attributes
-                0x00000000       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .text          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
  .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
  .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
@@ -589,7 +571,7 @@ LOAD ../obj/doraemon_pack.o
 LOAD ../obj/encoder.o
 LOAD ../obj/flash.o
 LOAD ../obj/hot.o
-LOAD ../obj/i2c.o
+LOAD ../obj/i2c_slave.o
 LOAD ../obj/i2cmaster.o
 LOAD ../obj/io.o
 LOAD ../obj/lr.o
@@ -628,329 +610,368 @@ END GROUP
  .icg_sec       0x00000400       0x20 ../obj/system_hc32f460.o
                 0x00000400                u32ICG
 
-.text           0x00000420     0x10c8
+.text           0x00000420     0x1af4
                 0x00000420                        . = ALIGN (0x4)
  *(.text)
+ .text          0x00000420      0x378 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x00000420                __aeabi_drsub
+                0x00000428                __aeabi_dsub
+                0x00000428                __subdf3
+                0x0000042c                __aeabi_dadd
+                0x0000042c                __adddf3
+                0x000006a4                __floatunsidf
+                0x000006a4                __aeabi_ui2d
+                0x000006c4                __floatsidf
+                0x000006c4                __aeabi_i2d
+                0x000006e8                __aeabi_f2d
+                0x000006e8                __extendsfdf2
+                0x0000072c                __floatundidf
+                0x0000072c                __aeabi_ul2d
+                0x0000073c                __floatdidf
+                0x0000073c                __aeabi_l2d
+ .text          0x00000798      0x424 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+                0x00000798                __aeabi_dmul
+                0x00000798                __muldf3
+                0x000009ec                __divdf3
+                0x000009ec                __aeabi_ddiv
+ .text          0x00000bbc       0xa0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x00000bbc                __truncdfsf2
+                0x00000bbc                __aeabi_d2f
  *(.text*)
  .text.ability_init
-                0x00000420       0x24 ../obj/ability.o
-                0x00000420                ability_init
+                0x00000c5c       0x3c ../obj/ability.o
+                0x00000c5c                ability_init
  .text.voltage_init
-                0x00000444       0x58 ../obj/ability.o
-                0x00000444                voltage_init
- .text.pwmfly_init
-                0x0000049c       0x60 ../obj/hot.o
-                0x0000049c                pwmfly_init
- .text.io_init  0x000004fc       0xf4 ../obj/io.o
-                0x000004fc                io_init
+                0x00000c98       0x64 ../obj/ability.o
+                0x00000c98                voltage_init
+ .text.voltage_get_adc
+                0x00000cfc       0x40 ../obj/ability.o
+                0x00000cfc                voltage_get_adc
+ *fill*         0x00000d3c        0x4 
+ .text.voltage_get
+                0x00000d40       0x68 ../obj/ability.o
+                0x00000d40                voltage_get
+ .text.voltage_overload
+                0x00000da8       0x9c ../obj/ability.o
+                0x00000da8                voltage_overload
+ .text.pwmfly_set_pwm
+                0x00000e44       0x50 ../obj/hot.o
+                0x00000e44                pwmfly_set_pwm
+ .text.temperature_get
+                0x00000e94       0x40 ../obj/hot.o
+                0x00000e94                temperature_get
+ .text.temperature_overload
+                0x00000ed4       0x74 ../obj/hot.o
+                0x00000ed4                temperature_overload
+ .text.io_init  0x00000f48      0x104 ../obj/io.o
+                0x00000f48                io_init
  .text.__NVIC_EnableIRQ
-                0x000005f0       0x3c ../obj/lr.o
+                0x0000104c       0x3c ../obj/lr.o
  .text.__NVIC_SetPriority
-                0x0000062c       0x54 ../obj/lr.o
+                0x00001088       0x54 ../obj/lr.o
  .text.sys_delay_us
-                0x00000680       0x50 ../obj/lr.o
-                0x00000680                sys_delay_us
- .text.lr_init  0x000006d0       0x60 ../obj/lr.o
-                0x000006d0                lr_init
+                0x000010dc       0x50 ../obj/lr.o
+                0x000010dc                sys_delay_us
+ .text.lr_init  0x0000112c       0x74 ../obj/lr.o
+                0x0000112c                lr_init
  .text.lr_receive_init
-                0x00000730       0xec ../obj/lr.o
-                0x00000730                lr_receive_init
- .text.lr_nec   0x0000081c       0xe0 ../obj/lr.o
-                0x0000081c                lr_nec
+                0x000011a0       0xec ../obj/lr.o
+                0x000011a0                lr_receive_init
+ .text.lr_nec   0x0000128c       0xe0 ../obj/lr.o
+                0x0000128c                lr_nec
  .text.IRQ084_Handler
-                0x000008fc      0x19c ../obj/lr.o
-                0x000008fc                IRQ084_Handler
+                0x0000136c      0x19c ../obj/lr.o
+                0x0000136c                IRQ084_Handler
  .text._pid_update
-                0x00000a98        0xe ../obj/main.o
-                0x00000a98                _pid_update
- *fill*         0x00000aa6        0x2 
- .text.main     0x00000aa8       0xa0 ../obj/main.o
-                0x00000aa8                main
+                0x00001508       0x10 ../obj/main.o
+                0x00001508                _pid_update
+ .text.main     0x00001518       0x5c ../obj/main.o
+                0x00001518                main
  .text.__msl_memcpy
-                0x00000b48       0x3e ../obj/mix_std_lib.o
-                0x00000b48                __msl_memcpy
+                0x00001574       0x3e ../obj/mix_std_lib.o
+                0x00001574                __msl_memcpy
  .text.c_queue_rx_buf_queue_t_full
-                0x00000b86       0x24 ../obj/rs485.o
-                0x00000b86                c_queue_rx_buf_queue_t_full
- *fill*         0x00000baa        0x2 
+                0x000015b2       0x24 ../obj/rs485.o
+                0x000015b2                c_queue_rx_buf_queue_t_full
+ *fill*         0x000015d6        0x2 
  .text.c_queue_rx_buf_queue_t_push
-                0x00000bac       0x74 ../obj/rs485.o
-                0x00000bac                c_queue_rx_buf_queue_t_push
+                0x000015d8       0x74 ../obj/rs485.o
+                0x000015d8                c_queue_rx_buf_queue_t_push
  .text.__set_rx_mode
-                0x00000c20       0x24 ../obj/rs485.o
+                0x0000164c       0x24 ../obj/rs485.o
  .text.IRQ080_Handler
-                0x00000c44       0x84 ../obj/rs485.o
-                0x00000c44                IRQ080_Handler
+                0x00001670       0x84 ../obj/rs485.o
+                0x00001670                IRQ080_Handler
  .text.IRQ083_Handler
-                0x00000cc8       0x38 ../obj/rs485.o
-                0x00000cc8                IRQ083_Handler
+                0x000016f4       0x38 ../obj/rs485.o
+                0x000016f4                IRQ083_Handler
  .text.IRQ081_Handler
-                0x00000d00       0x7c ../obj/rs485.o
-                0x00000d00                IRQ081_Handler
+                0x0000172c       0x7c ../obj/rs485.o
+                0x0000172c                IRQ081_Handler
  .text.IRQ082_Handler
-                0x00000d7c       0xbc ../obj/rs485.o
-                0x00000d7c                IRQ082_Handler
+                0x000017a8       0xbc ../obj/rs485.o
+                0x000017a8                IRQ082_Handler
  .text.stimer_get_by_id
-                0x00000e38       0x54 ../obj/soft_timer.o
-                0x00000e38                stimer_get_by_id
+                0x00001864       0x54 ../obj/soft_timer.o
+                0x00001864                stimer_get_by_id
  .text.stimer_clear
-                0x00000e8c       0x42 ../obj/soft_timer.o
-                0x00000e8c                stimer_clear
- *fill*         0x00000ece        0x2 
+                0x000018b8       0x42 ../obj/soft_timer.o
+                0x000018b8                stimer_clear
+ *fill*         0x000018fa        0x2 
  .text.stimer_init
-                0x00000ed0       0x50 ../obj/soft_timer.o
-                0x00000ed0                stimer_init
+                0x000018fc       0x50 ../obj/soft_timer.o
+                0x000018fc                stimer_init
  .text.stimer_register
-                0x00000f20       0x5c ../obj/soft_timer.o
-                0x00000f20                stimer_register
+                0x0000194c       0x5c ../obj/soft_timer.o
+                0x0000194c                stimer_register
  .text.stimer_ctrl
-                0x00000f7c       0xa0 ../obj/soft_timer.o
-                0x00000f7c                stimer_ctrl
+                0x000019a8       0xa0 ../obj/soft_timer.o
+                0x000019a8                stimer_ctrl
  .text.__NVIC_SetPriorityGrouping
-                0x0000101c       0x48 ../obj/system_hc32f460.o
+                0x00001a48       0x48 ../obj/system_hc32f460.o
  .text.__NVIC_EnableIRQ
-                0x00001064       0x3c ../obj/system_hc32f460.o
+                0x00001a90       0x3c ../obj/system_hc32f460.o
  .text.__NVIC_SetPriority
-                0x000010a0       0x54 ../obj/system_hc32f460.o
+                0x00001acc       0x54 ../obj/system_hc32f460.o
  .text.sys_set_delay_clk
-                0x000010f4       0x2c ../obj/system_hc32f460.o
-                0x000010f4                sys_set_delay_clk
+                0x00001b20       0x2c ../obj/system_hc32f460.o
+                0x00001b20                sys_set_delay_clk
  .text._sys_delay_us
-                0x00001120       0x34 ../obj/system_hc32f460.o
-                0x00001120                _sys_delay_us
+                0x00001b4c       0x34 ../obj/system_hc32f460.o
+                0x00001b4c                _sys_delay_us
  .text.WDT_init
-                0x00001154       0x1c ../obj/system_hc32f460.o
-                0x00001154                WDT_init
+                0x00001b80       0x1c ../obj/system_hc32f460.o
+                0x00001b80                WDT_init
  .text.sys_clk_init
-                0x00001170      0x124 ../obj/system_hc32f460.o
-                0x00001170                sys_clk_init
+                0x00001b9c      0x124 ../obj/system_hc32f460.o
+                0x00001b9c                sys_clk_init
  .text.IRQ038_Handler
-                0x00001294       0x38 ../obj/system_hc32f460.o
-                0x00001294                IRQ038_Handler
+                0x00001cc0       0x38 ../obj/system_hc32f460.o
+                0x00001cc0                IRQ038_Handler
  .text.sys_tick_init
-                0x000012cc       0x8c ../obj/system_hc32f460.o
-                0x000012cc                sys_tick_init
+                0x00001cf8       0x8c ../obj/system_hc32f460.o
+                0x00001cf8                sys_tick_init
  .text.sys_init
-                0x00001358       0x34 ../obj/system_hc32f460.o
-                0x00001358                sys_init
+                0x00001d84       0x34 ../obj/system_hc32f460.o
+                0x00001d84                sys_init
  .text.sys_delay_ms
-                0x0000138c       0x50 ../obj/system_hc32f460.o
-                0x0000138c                sys_delay_ms
+                0x00001db8       0x50 ../obj/system_hc32f460.o
+                0x00001db8                sys_delay_ms
  .text.sys_get_tick
-                0x000013dc       0x34 ../obj/system_hc32f460.o
-                0x000013dc                sys_get_tick
+                0x00001e08       0x34 ../obj/system_hc32f460.o
+                0x00001e08                sys_get_tick
  .text.Reset_Handler
-                0x00001410       0xb8 ../obj/startup_hc32f460.o
-                0x00001410                Reset_Handler
+                0x00001e3c       0xb8 ../obj/startup_hc32f460.o
+                0x00001e3c                Reset_Handler
  .text.Default_Handler
-                0x000014c8        0x4 ../obj/startup_hc32f460.o
-                0x000014c8                IRQ132_Handler
-                0x000014c8                DebugMon_Handler
-                0x000014c8                IRQ113_Handler
-                0x000014c8                IRQ031_Handler
-                0x000014c8                IRQ099_Handler
-                0x000014c8                HardFault_Handler
-                0x000014c8                IRQ095_Handler
-                0x000014c8                IRQ058_Handler
-                0x000014c8                IRQ065_Handler
-                0x000014c8                IRQ108_Handler
-                0x000014c8                SysTick_Handler
-                0x000014c8                IRQ139_Handler
-                0x000014c8                IRQ138_Handler
-                0x000014c8                IRQ012_Handler
-                0x000014c8                IRQ093_Handler
-                0x000014c8                IRQ056_Handler
-                0x000014c8                IRQ019_Handler
-                0x000014c8                PendSV_Handler
-                0x000014c8                NMI_Handler
-                0x000014c8                IRQ116_Handler
-                0x000014c8                IRQ011_Handler
-                0x000014c8                IRQ115_Handler
-                0x000014c8                IRQ051_Handler
-                0x000014c8                IRQ014_Handler
-                0x000014c8                IRQ062_Handler
-                0x000014c8                IRQ027_Handler
-                0x000014c8                IRQ117_Handler
-                0x000014c8                IRQ097_Handler
-                0x000014c8                IRQ088_Handler
-                0x000014c8                IRQ071_Handler
-                0x000014c8                IRQ034_Handler
-                0x000014c8                IRQ067_Handler
-                0x000014c8                IRQ070_Handler
-                0x000014c8                IRQ033_Handler
-                0x000014c8                IRQ077_Handler
-                0x000014c8                IRQ063_Handler
-                0x000014c8                IRQ028_Handler
-                0x000014c8                IRQ076_Handler
-                0x000014c8                IRQ039_Handler
-                0x000014c8                UsageFault_Handler
-                0x000014c8                IRQ133_Handler
-                0x000014c8                IRQ023_Handler
-                0x000014c8                IRQ126_Handler
-                0x000014c8                IRQ048_Handler
-                0x000014c8                IRQ009_Handler
-                0x000014c8                IRQ122_Handler
-                0x000014c8                IRQ089_Handler
-                0x000014c8                IRQ121_Handler
-                0x000014c8                IRQ074_Handler
-                0x000014c8                IRQ037_Handler
-                0x000014c8                IRQ072_Handler
-                0x000014c8                IRQ035_Handler
-                0x000014c8                IRQ130_Handler
-                0x000014c8                IRQ111_Handler
-                0x000014c8                IRQ134_Handler
-                0x000014c8                IRQ129_Handler
-                0x000014c8                IRQ142_Handler
-                0x000014c8                IRQ105_Handler
-                0x000014c8                IRQ140_Handler
-                0x000014c8                IRQ103_Handler
-                0x000014c8                IRQ021_Handler
-                0x000014c8                IRQ047_Handler
-                0x000014c8                IRQ008_Handler
-                0x000014c8                IRQ022_Handler
-                0x000014c8                IRQ046_Handler
-                0x000014c8                IRQ007_Handler
-                0x000014c8                IRQ043_Handler
-                0x000014c8                IRQ004_Handler
-                0x000014c8                IRQ041_Handler
-                0x000014c8                IRQ002_Handler
-                0x000014c8                IRQ098_Handler
-                0x000014c8                IRQ000_Handler
-                0x000014c8                IRQ118_Handler
-                0x000014c8                IRQ044_Handler
-                0x000014c8                IRQ005_Handler
-                0x000014c8                IRQ049_Handler
-                0x000014c8                IRQ045_Handler
-                0x000014c8                IRQ006_Handler
-                0x000014c8                IRQ125_Handler
-                0x000014c8                IRQ102_Handler
-                0x000014c8                IRQ107_Handler
-                0x000014c8                IRQ112_Handler
-                0x000014c8                IRQ052_Handler
-                0x000014c8                IRQ015_Handler
-                0x000014c8                MemManage_Handler
-                0x000014c8                IRQ143_Handler
-                0x000014c8                IRQ106_Handler
-                0x000014c8                SVC_Handler
-                0x000014c8                IRQ128_Handler
-                0x000014c8                IRQ124_Handler
-                0x000014c8                IRQ136_Handler
-                0x000014c8                IRQ040_Handler
-                0x000014c8                IRQ001_Handler
-                0x000014c8                IRQ123_Handler
-                0x000014c8                IRQ010_Handler
-                0x000014c8                IRQ068_Handler
-                0x000014c8                IRQ096_Handler
-                0x000014c8                IRQ059_Handler
-                0x000014c8                IRQ131_Handler
-                0x000014c8                IRQ042_Handler
-                0x000014c8                IRQ003_Handler
-                0x000014c8                IRQ024_Handler
-                0x000014c8                IRQ141_Handler
-                0x000014c8                IRQ104_Handler
-                0x000014c8                IRQ101_Handler
-                0x000014c8                IRQ090_Handler
-                0x000014c8                IRQ053_Handler
-                0x000014c8                IRQ016_Handler
-                0x000014c8                IRQ078_Handler
-                0x000014c8                IRQ032_Handler
-                0x000014c8                IRQ020_Handler
-                0x000014c8                IRQ073_Handler
-                0x000014c8                IRQ036_Handler
-                0x000014c8                IRQ092_Handler
-                0x000014c8                IRQ055_Handler
-                0x000014c8                IRQ018_Handler
-                0x000014c8                IRQ087_Handler
-                0x000014c8                IRQ109_Handler
-                0x000014c8                IRQ061_Handler
-                0x000014c8                IRQ026_Handler
-                0x000014c8                IRQ060_Handler
-                0x000014c8                IRQ025_Handler
-                0x000014c8                IRQ085_Handler
-                0x000014c8                IRQ119_Handler
-                0x000014c8                IRQ137_Handler
-                0x000014c8                IRQ110_Handler
-                0x000014c8                IRQ050_Handler
-                0x000014c8                IRQ013_Handler
-                0x000014c8                IRQ030_Handler
-                0x000014c8                IRQ064_Handler
-                0x000014c8                IRQ029_Handler
-                0x000014c8                IRQ127_Handler
-                0x000014c8                IRQ066_Handler
-                0x000014c8                IRQ091_Handler
-                0x000014c8                IRQ054_Handler
-                0x000014c8                IRQ017_Handler
-                0x000014c8                BusFault_Handler
-                0x000014c8                IRQ075_Handler
-                0x000014c8                IRQ069_Handler
-                0x000014c8                IRQ114_Handler
-                0x000014c8                IRQ086_Handler
-                0x000014c8                IRQ094_Handler
-                0x000014c8                IRQ057_Handler
-                0x000014c8                IRQ135_Handler
-                0x000014c8                IRQ100_Handler
-                0x000014c8                IRQ120_Handler
-                0x000014c8                IRQ079_Handler
- .text.memcpy   0x000014cc       0x1c d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
-                0x000014cc                memcpy
+                0x00001ef4        0x4 ../obj/startup_hc32f460.o
+                0x00001ef4                IRQ132_Handler
+                0x00001ef4                DebugMon_Handler
+                0x00001ef4                IRQ113_Handler
+                0x00001ef4                IRQ031_Handler
+                0x00001ef4                IRQ099_Handler
+                0x00001ef4                HardFault_Handler
+                0x00001ef4                IRQ095_Handler
+                0x00001ef4                IRQ058_Handler
+                0x00001ef4                IRQ065_Handler
+                0x00001ef4                IRQ108_Handler
+                0x00001ef4                SysTick_Handler
+                0x00001ef4                IRQ139_Handler
+                0x00001ef4                IRQ138_Handler
+                0x00001ef4                IRQ012_Handler
+                0x00001ef4                IRQ093_Handler
+                0x00001ef4                IRQ056_Handler
+                0x00001ef4                IRQ019_Handler
+                0x00001ef4                PendSV_Handler
+                0x00001ef4                NMI_Handler
+                0x00001ef4                IRQ116_Handler
+                0x00001ef4                IRQ011_Handler
+                0x00001ef4                IRQ115_Handler
+                0x00001ef4                IRQ051_Handler
+                0x00001ef4                IRQ014_Handler
+                0x00001ef4                IRQ062_Handler
+                0x00001ef4                IRQ027_Handler
+                0x00001ef4                IRQ117_Handler
+                0x00001ef4                IRQ097_Handler
+                0x00001ef4                IRQ088_Handler
+                0x00001ef4                IRQ071_Handler
+                0x00001ef4                IRQ034_Handler
+                0x00001ef4                IRQ067_Handler
+                0x00001ef4                IRQ070_Handler
+                0x00001ef4                IRQ033_Handler
+                0x00001ef4                IRQ077_Handler
+                0x00001ef4                IRQ063_Handler
+                0x00001ef4                IRQ028_Handler
+                0x00001ef4                IRQ076_Handler
+                0x00001ef4                IRQ039_Handler
+                0x00001ef4                UsageFault_Handler
+                0x00001ef4                IRQ133_Handler
+                0x00001ef4                IRQ023_Handler
+                0x00001ef4                IRQ126_Handler
+                0x00001ef4                IRQ048_Handler
+                0x00001ef4                IRQ009_Handler
+                0x00001ef4                IRQ122_Handler
+                0x00001ef4                IRQ089_Handler
+                0x00001ef4                IRQ121_Handler
+                0x00001ef4                IRQ074_Handler
+                0x00001ef4                IRQ037_Handler
+                0x00001ef4                IRQ072_Handler
+                0x00001ef4                IRQ035_Handler
+                0x00001ef4                IRQ130_Handler
+                0x00001ef4                IRQ111_Handler
+                0x00001ef4                IRQ134_Handler
+                0x00001ef4                IRQ129_Handler
+                0x00001ef4                IRQ142_Handler
+                0x00001ef4                IRQ105_Handler
+                0x00001ef4                IRQ140_Handler
+                0x00001ef4                IRQ103_Handler
+                0x00001ef4                IRQ021_Handler
+                0x00001ef4                IRQ047_Handler
+                0x00001ef4                IRQ008_Handler
+                0x00001ef4                IRQ022_Handler
+                0x00001ef4                IRQ046_Handler
+                0x00001ef4                IRQ007_Handler
+                0x00001ef4                IRQ043_Handler
+                0x00001ef4                IRQ004_Handler
+                0x00001ef4                IRQ041_Handler
+                0x00001ef4                IRQ002_Handler
+                0x00001ef4                IRQ098_Handler
+                0x00001ef4                IRQ000_Handler
+                0x00001ef4                IRQ118_Handler
+                0x00001ef4                IRQ044_Handler
+                0x00001ef4                IRQ005_Handler
+                0x00001ef4                IRQ049_Handler
+                0x00001ef4                IRQ045_Handler
+                0x00001ef4                IRQ006_Handler
+                0x00001ef4                IRQ125_Handler
+                0x00001ef4                IRQ102_Handler
+                0x00001ef4                IRQ107_Handler
+                0x00001ef4                IRQ112_Handler
+                0x00001ef4                IRQ052_Handler
+                0x00001ef4                IRQ015_Handler
+                0x00001ef4                MemManage_Handler
+                0x00001ef4                IRQ143_Handler
+                0x00001ef4                IRQ106_Handler
+                0x00001ef4                SVC_Handler
+                0x00001ef4                IRQ128_Handler
+                0x00001ef4                IRQ124_Handler
+                0x00001ef4                IRQ136_Handler
+                0x00001ef4                IRQ040_Handler
+                0x00001ef4                IRQ001_Handler
+                0x00001ef4                IRQ123_Handler
+                0x00001ef4                IRQ010_Handler
+                0x00001ef4                IRQ068_Handler
+                0x00001ef4                IRQ096_Handler
+                0x00001ef4                IRQ059_Handler
+                0x00001ef4                IRQ131_Handler
+                0x00001ef4                IRQ042_Handler
+                0x00001ef4                IRQ003_Handler
+                0x00001ef4                IRQ024_Handler
+                0x00001ef4                IRQ141_Handler
+                0x00001ef4                IRQ104_Handler
+                0x00001ef4                IRQ101_Handler
+                0x00001ef4                IRQ090_Handler
+                0x00001ef4                IRQ053_Handler
+                0x00001ef4                IRQ016_Handler
+                0x00001ef4                IRQ078_Handler
+                0x00001ef4                IRQ032_Handler
+                0x00001ef4                IRQ020_Handler
+                0x00001ef4                IRQ073_Handler
+                0x00001ef4                IRQ036_Handler
+                0x00001ef4                IRQ092_Handler
+                0x00001ef4                IRQ055_Handler
+                0x00001ef4                IRQ018_Handler
+                0x00001ef4                IRQ087_Handler
+                0x00001ef4                IRQ109_Handler
+                0x00001ef4                IRQ061_Handler
+                0x00001ef4                IRQ026_Handler
+                0x00001ef4                IRQ060_Handler
+                0x00001ef4                IRQ025_Handler
+                0x00001ef4                IRQ085_Handler
+                0x00001ef4                IRQ119_Handler
+                0x00001ef4                IRQ137_Handler
+                0x00001ef4                IRQ110_Handler
+                0x00001ef4                IRQ050_Handler
+                0x00001ef4                IRQ013_Handler
+                0x00001ef4                IRQ030_Handler
+                0x00001ef4                IRQ064_Handler
+                0x00001ef4                IRQ029_Handler
+                0x00001ef4                IRQ127_Handler
+                0x00001ef4                IRQ066_Handler
+                0x00001ef4                IRQ091_Handler
+                0x00001ef4                IRQ054_Handler
+                0x00001ef4                IRQ017_Handler
+                0x00001ef4                BusFault_Handler
+                0x00001ef4                IRQ075_Handler
+                0x00001ef4                IRQ069_Handler
+                0x00001ef4                IRQ114_Handler
+                0x00001ef4                IRQ086_Handler
+                0x00001ef4                IRQ094_Handler
+                0x00001ef4                IRQ057_Handler
+                0x00001ef4                IRQ135_Handler
+                0x00001ef4                IRQ100_Handler
+                0x00001ef4                IRQ120_Handler
+                0x00001ef4                IRQ079_Handler
+ .text.memcpy   0x00001ef8       0x1c d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+                0x00001ef8                memcpy
  *(.glue_7)
- .glue_7        0x000014e8        0x0 linker stubs
+ .glue_7        0x00001f14        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x000014e8        0x0 linker stubs
+ .glue_7t       0x00001f14        0x0 linker stubs
  *(.eh_frame)
  *(.init)
  *(.fini)
-                0x000014e8                        . = ALIGN (0x4)
+                0x00001f14                        . = ALIGN (0x4)
 
-.vfp11_veneer   0x000014e8        0x0
- .vfp11_veneer  0x000014e8        0x0 linker stubs
+.vfp11_veneer   0x00001f14        0x0
+ .vfp11_veneer  0x00001f14        0x0 linker stubs
 
-.v4_bx          0x000014e8        0x0
- .v4_bx         0x000014e8        0x0 linker stubs
+.v4_bx          0x00001f14        0x0
+ .v4_bx         0x00001f14        0x0 linker stubs
 
-.iplt           0x000014e8        0x0
- .iplt          0x000014e8        0x0 ../obj/ability.o
+.iplt           0x00001f14        0x0
+ .iplt          0x00001f14        0x0 ../obj/ability.o
 
-.rel.dyn        0x000014e8        0x0
- .rel.iplt      0x000014e8        0x0 ../obj/ability.o
+.rel.dyn        0x00001f14        0x0
+ .rel.iplt      0x00001f14        0x0 ../obj/ability.o
 
-.rodata         0x000014e8        0x0
-                0x000014e8                        . = ALIGN (0x4)
+.rodata         0x00001f14        0x0
+                0x00001f14                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x000014e8                        . = ALIGN (0x4)
+                0x00001f14                        . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000014e8                        __exidx_start = .
+                0x00001f14                        __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000014e8                        __exidx_end = .
+                0x00001f14                        __exidx_end = .
 
-.preinit_array  0x000014e8        0x0
-                0x000014e8                        . = ALIGN (0x4)
+.preinit_array  0x00001f14        0x0
+                0x00001f14                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end = .)
-                0x000014e8                        . = ALIGN (0x4)
+                0x00001f14                        . = ALIGN (0x4)
 
-.init_array     0x000014e8        0x0
-                0x000014e8                        . = ALIGN (0x4)
+.init_array     0x00001f14        0x0
+                0x00001f14                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
                 [!provide]                        PROVIDE (__init_array_end = .)
-                0x000014e8                        . = ALIGN (0x4)
+                0x00001f14                        . = ALIGN (0x4)
 
-.fini_array     0x000014e8        0x0
-                0x000014e8                        . = ALIGN (0x4)
+.fini_array     0x00001f14        0x0
+                0x00001f14                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x000014e8                        . = ALIGN (0x4)
-                0x000014e8                        __etext = ALIGN (0x4)
+                0x00001f14                        . = ALIGN (0x4)
+                0x00001f14                        __etext = ALIGN (0x4)
 
 .otp_sec
  *(.otp_sec)
@@ -958,7 +979,7 @@ END GROUP
 .otp_lock_sec
  *(.otp_lock_sec)
 
-.data           0x1fff8000        0x4 load address 0x000014e8
+.data           0x1fff8000        0x4 load address 0x00001f14
                 0x1fff8000                        . = ALIGN (0x4)
                 0x1fff8000                        __data_start__ = .
  *(vtable)
@@ -972,12 +993,12 @@ END GROUP
  *(.ramfunc*)
                 0x1fff8004                        . = ALIGN (0x4)
                 0x1fff8004                        __data_end__ = .
-                0x000014ec                        __etext_ret_ram = (__etext + ALIGN (SIZEOF (.data), 0x4))
+                0x00001f18                        __etext_ret_ram = (__etext + ALIGN (SIZEOF (.data), 0x4))
 
-.igot.plt       0x1fff8004        0x0 load address 0x000014ec
+.igot.plt       0x1fff8004        0x0 load address 0x00001f18
  .igot.plt      0x1fff8004        0x0 ../obj/ability.o
 
-.ret_ram_data   0x200f0000        0x0 load address 0x000014ec
+.ret_ram_data   0x200f0000        0x0 load address 0x00001f18
                 0x200f0000                        . = ALIGN (0x4)
                 0x200f0000                        __data_start_ret_ram__ = .
  *(.ret_ram_data)
@@ -985,7 +1006,7 @@ END GROUP
                 0x200f0000                        . = ALIGN (0x4)
                 0x200f0000                        __data_end_ret_ram__ = .
 
-.bss            0x1fff8008      0x644 load address 0x000014f0
+.bss            0x1fff8008      0x644 load address 0x00001f20
                 0x1fff8008                        . = ALIGN (0x4)
                 0x1fff8008                        _sbss = .
                 0x1fff8008                        __bss_start__ = _sbss
@@ -1077,7 +1098,13 @@ END GROUP
  .ARM.attributes
                 0x000001d4       0x25 ../obj/startup_hc32f460.o
  .ARM.attributes
-                0x000001f9       0x34 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+                0x000001f9       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x0000021b       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x0000023d       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .ARM.attributes
+                0x0000025f       0x34 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
                 [!provide]                        PROVIDE (_stack = __StackTop)
                 [!provide]                        PROVIDE (_Min_Heap_Size = (__HeapLimit - __HeapBase))
                 [!provide]                        PROVIDE (_Min_Stack_Size = (__StackTop - __StackLimit))
@@ -1089,98 +1116,98 @@ LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib
 LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libm.a
 LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000     0xfa70
- .debug_info    0x00000000     0x13ef ../obj/ability.o
- .debug_info    0x000013ef     0x1684 ../obj/hot.o
- .debug_info    0x00002a73      0xcd2 ../obj/io.o
- .debug_info    0x00003745     0x3b17 ../obj/lr.o
- .debug_info    0x0000725c      0x23a ../obj/main.o
- .debug_info    0x00007496      0x711 ../obj/mix_std_lib.o
- .debug_info    0x00007ba7     0x3bcc ../obj/rs485.o
- .debug_info    0x0000b773      0x34a ../obj/soft_timer.o
- .debug_info    0x0000babd     0x3fb3 ../obj/system_hc32f460.o
+.debug_info     0x00000000     0xed40
+ .debug_info    0x00000000     0x13ff ../obj/ability.o
+ .debug_info    0x000013ff      0x991 ../obj/hot.o
+ .debug_info    0x00001d90      0xcd2 ../obj/io.o
+ .debug_info    0x00002a62     0x3ac3 ../obj/lr.o
+ .debug_info    0x00006525      0x241 ../obj/main.o
+ .debug_info    0x00006766      0x711 ../obj/mix_std_lib.o
+ .debug_info    0x00006e77     0x3bcc ../obj/rs485.o
+ .debug_info    0x0000aa43      0x34a ../obj/soft_timer.o
+ .debug_info    0x0000ad8d     0x3fb3 ../obj/system_hc32f460.o
 
-.debug_abbrev   0x00000000     0x1220
+.debug_abbrev   0x00000000     0x11aa
  .debug_abbrev  0x00000000      0x177 ../obj/ability.o
- .debug_abbrev  0x00000177      0x190 ../obj/hot.o
- .debug_abbrev  0x00000307       0xbd ../obj/io.o
- .debug_abbrev  0x000003c4      0x339 ../obj/lr.o
- .debug_abbrev  0x000006fd      0x120 ../obj/main.o
- .debug_abbrev  0x0000081d      0x262 ../obj/mix_std_lib.o
- .debug_abbrev  0x00000a7f      0x3d1 ../obj/rs485.o
- .debug_abbrev  0x00000e50      0x190 ../obj/soft_timer.o
- .debug_abbrev  0x00000fe0      0x240 ../obj/system_hc32f460.o
+ .debug_abbrev  0x00000177      0x133 ../obj/hot.o
+ .debug_abbrev  0x000002aa       0xbd ../obj/io.o
+ .debug_abbrev  0x00000367      0x320 ../obj/lr.o
+ .debug_abbrev  0x00000687      0x120 ../obj/main.o
+ .debug_abbrev  0x000007a7      0x262 ../obj/mix_std_lib.o
+ .debug_abbrev  0x00000a09      0x3d1 ../obj/rs485.o
+ .debug_abbrev  0x00000dda      0x190 ../obj/soft_timer.o
+ .debug_abbrev  0x00000f6a      0x240 ../obj/system_hc32f460.o
 
-.debug_aranges  0x00000000      0x358
+.debug_aranges  0x00000000      0x340
  .debug_aranges
-                0x00000000       0x40 ../obj/ability.o
+                0x00000000       0x48 ../obj/ability.o
  .debug_aranges
-                0x00000040       0x40 ../obj/hot.o
+                0x00000048       0x30 ../obj/hot.o
  .debug_aranges
-                0x00000080       0x20 ../obj/io.o
+                0x00000078       0x20 ../obj/io.o
  .debug_aranges
-                0x000000a0       0x80 ../obj/lr.o
+                0x00000098       0x70 ../obj/lr.o
  .debug_aranges
-                0x00000120       0x28 ../obj/main.o
+                0x00000108       0x28 ../obj/main.o
  .debug_aranges
-                0x00000148       0x58 ../obj/mix_std_lib.o
+                0x00000130       0x58 ../obj/mix_std_lib.o
  .debug_aranges
-                0x000001a0       0xd8 ../obj/rs485.o
+                0x00000188       0xd8 ../obj/rs485.o
  .debug_aranges
-                0x00000278       0x58 ../obj/soft_timer.o
+                0x00000260       0x58 ../obj/soft_timer.o
  .debug_aranges
-                0x000002d0       0x88 ../obj/system_hc32f460.o
+                0x000002b8       0x88 ../obj/system_hc32f460.o
 
 .debug_rnglists
-                0x00000000      0x27b
+                0x00000000      0x266
  .debug_rnglists
-                0x00000000       0x2c ../obj/ability.o
+                0x00000000       0x32 ../obj/ability.o
  .debug_rnglists
-                0x0000002c       0x2b ../obj/hot.o
+                0x00000032       0x1f ../obj/hot.o
  .debug_rnglists
-                0x00000057       0x14 ../obj/io.o
+                0x00000051       0x14 ../obj/io.o
  .debug_rnglists
-                0x0000006b       0x63 ../obj/lr.o
+                0x00000065       0x55 ../obj/lr.o
  .debug_rnglists
-                0x000000ce       0x1a ../obj/main.o
+                0x000000ba       0x19 ../obj/main.o
  .debug_rnglists
-                0x000000e8       0x4f ../obj/mix_std_lib.o
+                0x000000d3       0x4f ../obj/mix_std_lib.o
  .debug_rnglists
-                0x00000137       0xa2 ../obj/rs485.o
+                0x00000122       0xa2 ../obj/rs485.o
  .debug_rnglists
-                0x000001d9       0x3f ../obj/soft_timer.o
+                0x000001c4       0x3f ../obj/soft_timer.o
  .debug_rnglists
-                0x00000218       0x63 ../obj/system_hc32f460.o
+                0x00000203       0x63 ../obj/system_hc32f460.o
 
-.debug_line     0x00000000     0x2a98
- .debug_line    0x00000000      0x268 ../obj/ability.o
- .debug_line    0x00000268      0x276 ../obj/hot.o
- .debug_line    0x000004de      0x1c0 ../obj/io.o
- .debug_line    0x0000069e      0x66f ../obj/lr.o
- .debug_line    0x00000d0d      0x1d1 ../obj/main.o
- .debug_line    0x00000ede      0x9f9 ../obj/mix_std_lib.o
- .debug_line    0x000018d7      0xa14 ../obj/rs485.o
- .debug_line    0x000022eb      0x34a ../obj/soft_timer.o
- .debug_line    0x00002635      0x463 ../obj/system_hc32f460.o
+.debug_line     0x00000000     0x295f
+ .debug_line    0x00000000      0x2b9 ../obj/ability.o
+ .debug_line    0x000002b9      0x1d0 ../obj/hot.o
+ .debug_line    0x00000489      0x1cc ../obj/io.o
+ .debug_line    0x00000655      0x5a2 ../obj/lr.o
+ .debug_line    0x00000bf7      0x1ae ../obj/main.o
+ .debug_line    0x00000da5      0x9f9 ../obj/mix_std_lib.o
+ .debug_line    0x0000179e      0xa14 ../obj/rs485.o
+ .debug_line    0x000021b2      0x34a ../obj/soft_timer.o
+ .debug_line    0x000024fc      0x463 ../obj/system_hc32f460.o
 
-.debug_str      0x00000000     0x6013
- .debug_str     0x00000000      0x9c3 ../obj/ability.o
-                                0xa21 (size before relaxing)
- .debug_str     0x000009c3      0x679 ../obj/hot.o
-                                0xad3 (size before relaxing)
- .debug_str     0x0000103c       0x14 ../obj/io.o
+.debug_str      0x00000000     0x5fe7
+ .debug_str     0x00000000      0x9d7 ../obj/ability.o
+                                0xa35 (size before relaxing)
+ .debug_str     0x000009d7      0x24b ../obj/hot.o
+                                0x5c7 (size before relaxing)
+ .debug_str     0x00000c22       0x14 ../obj/io.o
                                 0x7b3 (size before relaxing)
- .debug_str     0x00001050     0x2139 ../obj/lr.o
-                               0x305a (size before relaxing)
- .debug_str     0x00003189       0x87 ../obj/main.o
-                                0x2be (size before relaxing)
- .debug_str     0x00003210      0x206 ../obj/mix_std_lib.o
+ .debug_str     0x00000c36     0x2527 ../obj/lr.o
+                               0x3037 (size before relaxing)
+ .debug_str     0x0000315d       0x87 ../obj/main.o
+                                0x2d8 (size before relaxing)
+ .debug_str     0x000031e4      0x206 ../obj/mix_std_lib.o
                                 0x40c (size before relaxing)
- .debug_str     0x00003416     0x1280 ../obj/rs485.o
+ .debug_str     0x000033ea     0x1280 ../obj/rs485.o
                                0x22db (size before relaxing)
- .debug_str     0x00004696       0x78 ../obj/soft_timer.o
+ .debug_str     0x0000466a       0x78 ../obj/soft_timer.o
                                 0x2bf (size before relaxing)
- .debug_str     0x0000470e     0x1905 ../obj/system_hc32f460.o
+ .debug_str     0x000046e2     0x1905 ../obj/system_hc32f460.o
                                0x426b (size before relaxing)
 
 .comment        0x00000000       0x45
@@ -1195,17 +1222,29 @@ LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib
  .comment       0x00000045       0x46 ../obj/soft_timer.o
  .comment       0x00000045       0x46 ../obj/system_hc32f460.o
 
-.debug_frame    0x00000000      0xc20
- .debug_frame   0x00000000       0xb8 ../obj/ability.o
- .debug_frame   0x000000b8       0xc0 ../obj/hot.o
- .debug_frame   0x00000178       0x30 ../obj/io.o
- .debug_frame   0x000001a8      0x1e0 ../obj/lr.o
- .debug_frame   0x00000388       0x50 ../obj/main.o
- .debug_frame   0x000003d8      0x16c ../obj/mix_std_lib.o
- .debug_frame   0x00000544      0x374 ../obj/rs485.o
- .debug_frame   0x000008b8      0x140 ../obj/soft_timer.o
- .debug_frame   0x000009f8      0x200 ../obj/system_hc32f460.o
- .debug_frame   0x00000bf8       0x28 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+.debug_frame    0x00000000      0xcd4
+ .debug_frame   0x00000000       0xd4 ../obj/ability.o
+ .debug_frame   0x000000d4       0x84 ../obj/hot.o
+ .debug_frame   0x00000158       0x30 ../obj/io.o
+ .debug_frame   0x00000188      0x198 ../obj/lr.o
+ .debug_frame   0x00000320       0x4c ../obj/main.o
+ .debug_frame   0x0000036c      0x16c ../obj/mix_std_lib.o
+ .debug_frame   0x000004d8      0x374 ../obj/rs485.o
+ .debug_frame   0x0000084c      0x140 ../obj/soft_timer.o
+ .debug_frame   0x0000098c      0x200 ../obj/system_hc32f460.o
+ .debug_frame   0x00000b8c       0xac d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00000c38       0x50 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00000c88       0x24 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00000cac       0x28 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+
+.debug_line_str
+                0x00000000       0xce
+ .debug_line_str
+                0x00000000       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_line_str
+                0x000000ce       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_line_str
+                0x000000ce       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
 
 Cross Reference Table
 
@@ -1363,7 +1402,6 @@ NMI_Handler                                       ../obj/startup_hc32f460.o
 PORT_IN_init                                      ../obj/system_hc32f460.o
 PendSV_Handler                                    ../obj/startup_hc32f460.o
 Relay                                             ../obj/lr.o
-Relay_robot                                       ../obj/lr.o
 Reset_Handler                                     ../obj/startup_hc32f460.o
 SVC_Handler                                       ../obj/startup_hc32f460.o
 SysTick_Handler                                   ../obj/startup_hc32f460.o
@@ -1431,6 +1469,8 @@ _sys_delay_us                                     ../obj/system_hc32f460.o
 ability_init                                      ../obj/ability.o
                                                   ../obj/main.o
                                                   ../obj/lr.o
+ability_robote_init                               ../obj/ability.o
+                                                  ../obj/i2c_slave.o
 c_queue_rx_buf_queue_t_empty                      ../obj/rs485.o
 c_queue_rx_buf_queue_t_front                      ../obj/rs485.o
 c_queue_rx_buf_queue_t_full                       ../obj/rs485.o
@@ -1457,35 +1497,31 @@ encoder_get_e                                     ../obj/encoder.o
                                                   ../obj/pid_pos.o
 encoder_init                                      ../obj/encoder.o
 hex_char                                          ../obj/mix_std_lib.o
-i2c_check_addr                                    ../obj/i2c.o
-i2c_check_stop                                    ../obj/i2c.o
-i2c_disable                                       ../obj/i2c.o
-i2c_enable                                        ../obj/i2c.o
-i2c_init                                          ../obj/i2c.o
-i2c_is_tx_mode                                    ../obj/i2c.o
-i2c_master_check_busy                             ../obj/i2cmaster.o
+i2c_master_cmd_and_read                           ../obj/i2cmaster.o
 i2c_master_init                                   ../obj/i2cmaster.o
-i2c_master_read_byte                              ../obj/i2cmaster.o
-i2c_master_send_addr                              ../obj/i2cmaster.o
-i2c_master_start                                  ../obj/i2cmaster.o
-i2c_master_stop                                   ../obj/i2cmaster.o
-i2c_master_write_byte                             ../obj/i2cmaster.o
-i2c_read_byte                                     ../obj/i2c.o
-i2c_waite                                         ../obj/i2c.o
-i2c_write_byte                                    ../obj/i2c.o
+i2c_master_read_status                            ../obj/i2cmaster.o
+i2c_master_send_cmd                               ../obj/i2cmaster.o
+i2c_slave_get_status                              ../obj/i2c_slave.o
+i2c_slave_init                                    ../obj/i2c_slave.o
+i2c_slave_ir_process                              ../obj/i2c_slave.o
+i2c_slave_poll                                    ../obj/i2c_slave.o
+i2c_slave_set_status                              ../obj/i2c_slave.o
+i2c_test                                          ../obj/i2cmaster.o
 inquire                                           ../obj/lr.o
 io_init                                           ../obj/io.o
                                                   ../obj/main.o
 lr_data                                           ../obj/lr.o
 lr_get_data                                       ../obj/lr.o
+                                                  ../obj/i2c_slave.o
 lr_init                                           ../obj/lr.o
                                                   ../obj/main.o
+                                                  ../obj/i2c_slave.o
 lr_nec                                            ../obj/lr.o
                                                   ../obj/main.o
+                                                  ../obj/i2c_slave.o
 lr_receive_init                                   ../obj/lr.o
                                                   ../obj/main.o
-lr_robot                                          ../obj/lr.o
-lr_robot_data                                     ../obj/lr.o
+                                                  ../obj/i2c_slave.o
 main                                              ../obj/main.o
                                                   ../obj/startup_hc32f460.o
 memcpy                                            d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
@@ -1521,8 +1557,6 @@ pid_speed_get_speed                               ../obj/pid_speed.o
 pid_speed_init                                    ../obj/pid_speed.o
 pid_speed_set_speed                               ../obj/pid_speed.o
                                                   ../obj/rs485.o
-pwmfly_init                                       ../obj/hot.o
-                                                  ../obj/main.o
 pwmfly_set_pwm                                    ../obj/hot.o
 pwmled_init                                       ../obj/pwmled.o
 pwmled_set_pwm                                    ../obj/pwmled.o
@@ -1550,22 +1584,24 @@ sys_delay_ms                                      ../obj/system_hc32f460.o
                                                   ../obj/pid_pos.o
                                                   ../obj/main.o
                                                   ../obj/lr.o
-                                                  ../obj/hot.o
+                                                  ../obj/i2c_slave.o
                                                   ../obj/ability.o
 sys_delay_tick                                    ../obj/system_hc32f460.o
 sys_delay_us                                      ../obj/lr.o
+                                                  ../obj/i2cmaster.o
 sys_get_tick                                      ../obj/system_hc32f460.o
                                                   ../obj/soft_timer.o
                                                   ../obj/rs485.o
                                                   ../obj/lr.o
+                                                  ../obj/i2c_slave.o
 sys_init                                          ../obj/system_hc32f460.o
                                                   ../obj/startup_hc32f460.o
 sys_set_delay_clk                                 ../obj/system_hc32f460.o
 sys_tick_init                                     ../obj/system_hc32f460.o
 sys_tick_msb                                      ../obj/system_hc32f460.o
 temperature_get                                   ../obj/hot.o
-temperature_into                                  ../obj/hot.o
 temperature_overload                              ../obj/hot.o
+                                                  ../obj/main.o
 u32ICG                                            ../obj/system_hc32f460.o
 uart_init                                         ../obj/uart.o
                                                   ../obj/rs485.o
@@ -1574,6 +1610,7 @@ voltage_get_adc                                   ../obj/ability.o
 voltage_init                                      ../obj/ability.o
                                                   ../obj/main.o
 voltage_overload                                  ../obj/ability.o
+                                                  ../obj/main.o
 ws2812_idle                                       ../obj/ws2812.o
 ws2812_init                                       ../obj/ws2812.o
 ws2812_reset                                      ../obj/ws2812.o

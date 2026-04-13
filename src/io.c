@@ -71,12 +71,16 @@ void io_init(void)
 	CM_GPIO->PFSRB8 = 4u; //TIMA_4_PWM3
 	CM_GPIO->PCRB8 = 0x0040u;
 	//继电器
-	CM_GPIO->PCRA1 = 0x0052u;//继电器1open
-	CM_GPIO->PCRA2 = 0x0052u;//继电器1close
-	CM_GPIO->PCRA3 = 0x0052u;//继电器2open
-	CM_GPIO->PCRA4 = 0x0052u;//继电器2close
+	CM_GPIO->PCRA1 = 0x0052u;//继电器1open机器人+
+	CM_GPIO->PCRA2 = 0x0052u;//继电器1close机器人+
+
+	CM_GPIO->PCRA3 = 0x0052u;//继电器2open机器人-充电站+
+	CM_GPIO->PCRA4 = 0x0052u;//继电器2close机器人-充电站+
+
+	CM_GPIO->PCRB6 = 0x0052u;//继电器open充电站-
+	CM_GPIO->PCRB5 = 0x0052u;//继电器close充电站-
 	//散热风扇
-	CM_GPIO->PCRC13 = 0x0053u;
+	CM_GPIO->PCRC13 = 0x0050u;
 	CM_GPIO->PFSRC13 = 4u; //TIMA_4_PWM8
 	//蜂鸣器
 	CM_GPIO->PCRA6 = 0x0052u;
@@ -86,8 +90,8 @@ void io_init(void)
 	//CM_GPIO->PFSRB6 = 0x0040u; 
 
 	//电压采样
-	CM_GPIO->PCRA0 = 0x0040u;//ADC1_IN0
-	CM_GPIO->PFSRA0 = 0X00u;
+	CM_GPIO->PCRB0 = 0x0040u;//ADC12_IN8
+	CM_GPIO->PFSRB0 = 0X00u;
 
 	//I2C1_SDA
 	CM_GPIO -> PFSRA9 = 48u; //I2C1_SDA

@@ -2,42 +2,33 @@
 #include "lr.h"
 #include "system_hc32f460.h"
 
+	// CM_GPIO->PCRA1 = 0x0052u;//继电器1open机器人+0x0002
+	// CM_GPIO->PCRA2 = 0x0052u;//继电器1close机器人+0x0004
 
-// //红外发射
-// 	CM_GPIO->PFSRB9 = 4u; //TIMA_4_PWM4
-// 	CM_GPIO->PCRB9 = 0x0050u;
-// 	//红外接收
-// 	CM_GPIO->PFSRB8 = 4u; //TIMA_4_PWM3
-// 	CM_GPIO->PCRB8 = 0x0040u;
-// CM_GPIO->PCRA1 = 0x0053u;//继电器1open+    0x0002
-// CM_GPIO->PCRA2 = 0x0053u;//继电器1close+   0x0004
-// CM_GPIO->PCRA3 = 0x0053u;//继电器2open-    0x0008
-// CM_GPIO->PCRA4 = 0x0053u;//继电器2close-   0x0010
-// 	//散热风扇
-// 	CM_GPIO->PCRC13 = 0x0050u;
-// 	CM_GPIO->PFSRC13 = 4u; //TIMA_4_PWM8
-// 	//蜂鸣器
-// 	CM_GPIO->PCRA6 = 0x0052u;
-// 	//温度采集
-// 	CM_GPIO->PCRB6 = 0x0040u;
-// 	CM_GPIO->PFSRB6 = 
+	// CM_GPIO->PCRA3 = 0x0052u;//继电器2open机器人-充电站+0x0008
+	// CM_GPIO->PCRA4 = 0x0052u;//继电器2close机器人-充电站+ 0x0010
 
-// 	//电压采样
-// 	CM_GPIO->PCRA0 = 0x0040u;
-
+	// CM_GPIO->PCRB6 = 0x0052u;//继电器open充电站-0x0040
+	// CM_GPIO->PCRB5 = 0x0052u;//继电器close充电站-0x0020
 void ability_init(void)
 {
-    CM_GPIO->PORRA =
-        0x0004u | 
-        0x0010u | 
-        0x0008u | 
-        0x0040u |
-        0x0002u;  
-    CM_GPIO->POSRA = 0x0004 | 0x0010;
-    sys_delay_ms(1);
-    CM_GPIO->PORRA = 0x0004 | 0x0010;
+    CM_GPIO->PORRA = 0x0058u;
+    CM_GPIO->PORRB = 0x0060u;
+    sys_delay_ms(10);
+    CM_GPIO->POSRB = 0x0020u;
+    CM_GPIO->POSRA = 0x0010u;
+    sys_delay_ms(10);
+    CM_GPIO->PORRB = 0x0020u;
+    CM_GPIO->PORRA = 0x0010u;
 }
-
+void ability_robote_init(void)
+{
+    CM_GPIO->PORRA = 0x001Eu; 
+    sys_delay_ms(10); 
+    CM_GPIO->POSRA = 0x0004 | 0x0010;
+    sys_delay_ms(10);
+    CM_GPIO->PORRA = 0x001Eu; 
+}
 
 void voltage_init(void)//电压采样
 {
@@ -47,9 +38,10 @@ void voltage_init(void)//电压采样
     CM_ADC1->CR0 = 0x04c0u;
     CM_ADC1->CR1 = 0x0000u;
     CM_ADC1->TRGSR = 0x0000u;
-    CM_ADC1->CHSELRA = 0x00000001u;
-    CM_ADC1->AVCHSELR = 0x00000001u;
-    CM_ADC1->SSTR0 = 0xffu;
+    CM_ADC1->CHSELRA = 0x00000120u;
+    CM_ADC1->AVCHSELR = 0x00000120u;
+    CM_ADC1->SSTR5 = 0xffu; 
+    CM_ADC1->SSTR8 = 0xffu;
     CM_ADC1->PGACR = 0x0000u;
 }
 
@@ -57,7 +49,7 @@ uint16_t voltage_get_adc(void)
 {
     CM_ADC1->STR = 0x01u;
     while ((CM_ADC1->ISR & 0x01u) == 0);
-    uint16_t res = (uint16_t)CM_ADC1->DR0;
+    uint16_t res = (uint16_t)CM_ADC1->DR8;
     CM_ADC1->ISR = 0x01u;
     return res;
 }
@@ -71,17 +63,19 @@ float voltage_get()
 void voltage_overload(void)
 {
     float voltage =voltage_get();
-    if (voltage > 420.0f)//过压约26V
+    if (voltage > 420.0f)//过压
     {
-        CM_GPIO->PORRA = 0x0004 | 0x0010 | 0x0008 | 0x0002;
+        CM_GPIO->PORRA = 0x0004 | 0x0002;
+        CM_GPIO->PORRB = 0x0020 | 0x0040u;
         CM_GPIO->POSRA = 0x0040;
     }
-    else if (voltage < 377.0f)//欠压19V
+    else if (voltage < 400.0f)//欠压
     {
-        CM_GPIO->PORRA = 0x0004 | 0x0010 | 0x0008 | 0x0002;
+        CM_GPIO->PORRA = 0x0004 | 0x0002;
+        CM_GPIO->PORRB = 0x0020 | 0x0040u;
         CM_GPIO->POSRA = 0x0040;
     }
-    else if (voltage >= 377.0f && voltage <= 420.0f)
+    else if (voltage >= 400.0f && voltage <= 420.0f)
     {
         CM_GPIO->PORRA = 0x0040;
     }
