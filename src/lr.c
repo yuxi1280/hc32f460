@@ -105,10 +105,7 @@ void lr_nec( uint8_t addr, uint8_t cmd)
 {
     uint32_t code;
     uint8_t i;
-    code = (uint32_t)addr | 
-    ((uint32_t)(uint8_t)~addr << 8) | 
-    ((uint32_t)cmd << 16) | 
-    ((uint32_t)(uint8_t)~cmd << 24);
+    code = (uint32_t)addr | ((uint32_t)(uint8_t)~addr << 8) | ((uint32_t)cmd << 16) | ((uint32_t)(uint8_t)~cmd << 24);
     //code = addr | ((~addr) << 8) | (cmd << 16) | ((~cmd) << 24);
     lr_nec_tall();
     sys_delay_us(9000);
@@ -132,6 +129,7 @@ void lr_nec( uint8_t addr, uint8_t cmd)
     lr_nec_low();
     
 }
+
 
 //红外接收中断处理函数
 void IRQ084_Handler(void)

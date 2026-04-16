@@ -41,20 +41,27 @@ void i2c_slave_init(void)
     bCM_I2C1->CR1_b.PE = 0;
     bCM_I2C1->CR1_b.SWRST = 1;
     bCM_I2C1->CR1_b.PE = 1;
-    CM_I2C1->SLR0 = ((I2C_SLAVE_ADDR << 1) | 0x01u);
+
+    CM_I2C1->CLR = 0x00F050DFu;
+
+    CM_I2C1->SLR0 = 0x10A0u;
     CM_I2C1->SLR1 = 0x00000000u;
     CM_I2C1->CCR = 0x000E2505u;
     CM_I2C1->FLTR = 0x00000003u;
-    CM_I2C1->CR1 = 0x00000044u;
     bCM_I2C1->CR1_b.ACK = 1;
     bCM_I2C1->CR1_b.SWRST = 0;
+    CM_I2C1->CLR = 0x00F050DFu;
+    bCM_I2C1->CR1_b.PE = 1;
     
     slave_status = I2C_STATUS_IDLE;
     slave_cmd = 0xFF;
     slave_cmd_ready = 0;
     ir_comm_state = 0;
-    last_ir_heartbeat = 0;
+    last_ir_heartbeat = sys_get_tick();
+
 }
+
+
 
 static uint8_t i2c_check_addr_match(void)
 {
@@ -106,11 +113,24 @@ static void i2c_slave_send_byte(uint8_t data)
     }
     
     CM_I2C1->CLR = (1u << 3);
+    (void)CM_I2C1->DRR; 
 }
+
+static volatile uint8_t status_changed = 0;
 
 void i2c_slave_poll(void)
 {
     // 检查地址匹配
+     if (CM_I2C1->SR & (1u << 0)) { 
+        CM_I2C1->CLR = (1u << 0);  
+        
+    }
+
+     if (CM_I2C1->SR & (1u << 12)) {
+        CM_I2C1->CLR = (1u << 12);
+    }
+
+
     if (i2c_check_addr_match()) {
         // 判断主机是读还是写
         if (i2c_is_tx_mode()) {
@@ -128,10 +148,48 @@ void i2c_slave_poll(void)
     
     // 检查停止条件
     if (i2c_check_stop_cond()) {
-        // I2C通讯结束，命令已接收
-        // 实际的命令处理在 i2c_slave_ir_process() 中进行
+        //I2C通讯结束，命令已接收 
+        if (slave_cmd_ready) {
+            if (slave_cmd == I2C_CMD_TEST)
+             {            
+                CM_GPIO->PORRA = 0x001Eu; 
+                CM_GPIO->POSRA = 0x0002;
+                sys_delay_ms(10); 
+                CM_GPIO->PORRA = 0x001Eu;
+                sys_delay_ms(1000); 
+                CM_GPIO->POSRA = 0x0004;
+                sys_delay_ms(10);
+                CM_GPIO->PORRA = 0x001Eu; 
+               
+            }
+            if(slave_cmd == I2C_CMD_RESET )
+            {
+                CM_GPIO->PORRA = 0x001Eu; 
+                CM_GPIO->POSRA = 0x0008;
+                sys_delay_ms(10); 
+                CM_GPIO->PORRA = 0x001Eu;
+                sys_delay_ms(1000); 
+                CM_GPIO->POSRA = 0x0010;
+                sys_delay_ms(10);
+                CM_GPIO->PORRA = 0x001Eu;
+
+            }
+            slave_cmd_ready = 0;
+        }
+
     }
 }
+
+uint8_t i2c_slave_get_status_changed(void)
+{
+    if (status_changed) {
+        status_changed = 0;
+        return 1;
+    }
+    return 0;
+}
+
+
 
 void i2c_slave_ir_process(void)
 {
@@ -160,6 +218,17 @@ void i2c_slave_ir_process(void)
                 // 空闲命令
                 ir_comm_state = 0;
                 slave_status = I2C_STATUS_IDLE;
+                break;
+
+            case I2C_CMD_TEST:
+                CM_GPIO->PORRA = 0x001E;
+                CM_GPIO->POSRA = 0x0008;
+                sys_delay_ms(10);
+                CM_GPIO->PORRA = 0x001E;
+                CM_GPIO->POSRA = 0x0010;
+                sys_delay_ms(10);
+                CM_GPIO->PORRA = 0x001E;
+                slave_status = I2C_STATUS_TEST_TRUE;
                 break;
                 
             default:
@@ -207,24 +276,24 @@ void i2c_slave_ir_process(void)
         }
     }
     
-
+    if(ir_comm_state == 1) {
         // 检查心跳超时
         if (now - last_ir_heartbeat >= IR_HEARTBEAT_TIMEOUT)
         {
-            ir_comm_state = 3;  // 超时，进入重定位状态
+            ir_comm_state = 3;
             slave_status = I2C_STATUS_INTERRUPT;
         }
-    
+    }
     
     // 重定位状态处理
     if (ir_comm_state == 3) {
-        lr_nec(0xAA, 0xFF);  // 发送重定位信号
+        lr_nec(0xAA, 0xFF); 
         ability_robote_init();  
         lr_init();
         lr_receive_init();
         sys_delay_ms(10);
-        ir_comm_state = 0;  // 回到空闲
-        slave_status = I2C_STATUS_INTERRUPT;  // 保持中断状态，等待主机处理
+        ir_comm_state = 0;
+        slave_status = I2C_STATUS_IDLE; 
     }
 }
 

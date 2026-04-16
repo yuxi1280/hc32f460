@@ -25,7 +25,7 @@ void ability_robote_init(void)
 {
     CM_GPIO->PORRA = 0x001Eu; 
     sys_delay_ms(10); 
-    CM_GPIO->POSRA = 0x0004 | 0x0010;
+    CM_GPIO->POSRA = 0x0014;
     sys_delay_ms(10);
     CM_GPIO->PORRA = 0x001Eu; 
 }
