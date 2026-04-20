@@ -6,9 +6,9 @@
 
 #define I2C_SLAVE_ADDR  0x50
 
-#define I2C_CMD_CHARGE_START    0x01
-#define I2C_CMD_CHARGE_COMPLETE 0x02
-#define I2C_CMD_IDLE            0x00
+#define I2C_CMD_CHARGE_START    0x01    //到位
+#define I2C_CMD_CHARGE_COMPLETE 0x02    //充电完成
+#define I2C_CMD_IDLE            0x00    //空闲
 #define I2C_CMD_TEST            0x03  // 测试命令
 #define I2C_CMD_RESET           0x04  // 复位命令
 

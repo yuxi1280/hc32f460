@@ -14,12 +14,6 @@
 
 
 
-
-/*
-i2c
-测温
-*/
-
 #define lr_nec_tall() do{ CM_TMRA_4->CMPAR4 =  82; CM_TMRA_4->PCONR4 = 0x1043u; } while(0)//低位
 #define lr_nec_low() do{  CM_TMRA_4->PCONR4 = 0x1243u; } while(0)//高位
 
@@ -63,8 +57,8 @@ void lr_init(void)//红外发射初始化
 
     CM_TMRA_4->CMPAR4 = 0u;
     CM_TMRA_4->PCONR4 = 0x1343u;
-	CM_TMRA_4->CMPAR8 = 0u;
-    CM_TMRA_4->PCONR8 = 0x1043u;
+	// CM_TMRA_4->CMPAR8 = 0u;
+    // CM_TMRA_4->PCONR8 = 0x1043u;
     bCM_TMRA_4->BCSTRL_b.START = 1u;    
 }
 
@@ -129,6 +123,8 @@ void lr_nec( uint8_t addr, uint8_t cmd)
     lr_nec_low();
     
 }
+
+
 
 
 //红外接收中断处理函数
@@ -262,24 +258,23 @@ void Relay (void)
             {
                 case 0x11:
                     //到位
-                    lr_nec(0xAA, 0x12);
-                    break;
-                case 0x13:
-                    //精确
-                    ability_init();
-					sys_delay_ms(10);
+                    
+					CM_GPIO->PORRB = 0x0060u;
+					CM_GPIO->PORRA = 0x0018u;
+					sys_delay_ms(10); 
 					CM_GPIO->POSRB = 0X0040U;
-					sys_delay_ms(10);
-					CM_GPIO->PORRB = 0X0040U;
 					sys_delay_ms(10);
 					CM_GPIO->POSRA = 0x0008u;
 					sys_delay_ms(10);
 					CM_GPIO->PORRB = 0x0060u;
 					CM_GPIO->PORRA = 0x0018u;
-
+					sys_delay_ms(100);
+					lr_nec(0xAA, 0x12);
 					last_heartbeat_time = sys_get_tick();
 					state = 1;
                     break;
+
+
 				case 0xFF:
 					state = 3;
 					break;

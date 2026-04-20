@@ -3,6 +3,18 @@
 #include "system_hc32f460.h"
 
 
+void pwmfly_init(void)//风扇
+{
+    CM_PWC->FCG2 &= ~(1 << 5); 
+    CM_TMRA_4->BCSTRL = 0x52u;
+    CM_TMRA_4->BCSTRH = 0x00u;
+    CM_TMRA_4->CNTER = 0u;
+    CM_TMRA_4->PERAR = 125u;
+
+    CM_TMRA_4->CMPAR4 = 0u;
+    CM_TMRA_4->PCONR4 = 0x1043u;
+    bCM_TMRA_4->BCSTRL_b.START = 1u;    
+}
 
 void pwmfly_set_pwm(uint16_t duty)
 {

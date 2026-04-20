@@ -149,33 +149,7 @@ void i2c_slave_poll(void)
     // 检查停止条件
     if (i2c_check_stop_cond()) {
         //I2C通讯结束，命令已接收 
-        if (slave_cmd_ready) {
-            if (slave_cmd == I2C_CMD_TEST)
-             {            
-                CM_GPIO->PORRA = 0x001Eu; 
-                CM_GPIO->POSRA = 0x0002;
-                sys_delay_ms(10); 
-                CM_GPIO->PORRA = 0x001Eu;
-                sys_delay_ms(1000); 
-                CM_GPIO->POSRA = 0x0004;
-                sys_delay_ms(10);
-                CM_GPIO->PORRA = 0x001Eu; 
-               
-            }
-            if(slave_cmd == I2C_CMD_RESET )
-            {
-                CM_GPIO->PORRA = 0x001Eu; 
-                CM_GPIO->POSRA = 0x0008;
-                sys_delay_ms(10); 
-                CM_GPIO->PORRA = 0x001Eu;
-                sys_delay_ms(1000); 
-                CM_GPIO->POSRA = 0x0010;
-                sys_delay_ms(10);
-                CM_GPIO->PORRA = 0x001Eu;
-
-            }
-            slave_cmd_ready = 0;
-        }
+        
 
     }
 }
@@ -188,6 +162,20 @@ uint8_t i2c_slave_get_status_changed(void)
     }
     return 0;
 }
+
+
+// #define I2C_CMD_CHARGE_START    0x01    //到位
+// #define I2C_CMD_CHARGE_COMPLETE 0x02    //充电完成
+// #define I2C_CMD_IDLE            0x00    //空闲
+// #define I2C_CMD_TEST            0x03  // 测试命令
+// #define I2C_CMD_RESET           0x04  // 复位命令
+
+// #define I2C_STATUS_NORMAL       0x10  // 红外通讯正常
+// #define I2C_STATUS_INTERRUPT    0x11  // 通讯中断或重定位
+// #define I2C_STATUS_IDLE         0x00  // 未进行通讯
+// #define I2C_STATUS_TEST         0x03  // 测试状态
+// #define I2C_STATUS_TEST_TRUE    0x55  //测试正常
+
 
 
 
@@ -204,13 +192,22 @@ void i2c_slave_ir_process(void)
                 // 主机要求开始充电，发送"到位"信号给充电桩
                 lr_nec(0xAA, 0x11);  
                 ir_comm_state = 0;  
+                // CM_GPIO->PORRA = 0x001E;	
+                // CM_GPIO->POSRA = 0x0002;
+				// CM_GPIO->POSRA = 0x0008;
+                // sys_delay_ms(10);
+				// CM_GPIO->PORRA = 0x001E;
                 slave_status = I2C_STATUS_IDLE; 
                 break;
                 
+
+
+
             case I2C_CMD_CHARGE_COMPLETE:
                 // 主机要求发送充电完成信号
                 lr_nec(0xAA, 0xAA);  // 完成
                 ir_comm_state = 2;  // 充电完成
+                ability_robote_init(); 
                 slave_status = I2C_STATUS_NORMAL;
                 break;
                 
@@ -220,16 +217,16 @@ void i2c_slave_ir_process(void)
                 slave_status = I2C_STATUS_IDLE;
                 break;
 
-            case I2C_CMD_TEST:
-                CM_GPIO->PORRA = 0x001E;
-                CM_GPIO->POSRA = 0x0008;
-                sys_delay_ms(10);
-                CM_GPIO->PORRA = 0x001E;
-                CM_GPIO->POSRA = 0x0010;
-                sys_delay_ms(10);
-                CM_GPIO->PORRA = 0x001E;
-                slave_status = I2C_STATUS_TEST_TRUE;
-                break;
+            // case I2C_CMD_TEST:
+            //     CM_GPIO->PORRA = 0x001E;
+            //     CM_GPIO->POSRA = 0x0008;
+            //     sys_delay_ms(10);
+            //     CM_GPIO->PORRA = 0x001E;
+            //     CM_GPIO->POSRA = 0x0010;
+            //     sys_delay_ms(10);
+            //     CM_GPIO->PORRA = 0x001E;
+            //     slave_status = I2C_STATUS_TEST_TRUE;
+            //     break;
                 
             default:
                 break;
@@ -239,19 +236,17 @@ void i2c_slave_ir_process(void)
     }
     
     if (lr_get_data(&ir_data)) {
-        if (ir_data.addr == 0xAA) {
+        if (ir_data.addr == 0xAA) 
+        {
             switch (ir_data.cmd) {
                 case 0x12:  
                     CM_GPIO->PORRA = 0x001E;	
 					sys_delay_ms(10);
                     CM_GPIO->POSRA = 0x0008;
                     sys_delay_ms(10);
-                    CM_GPIO->PORRA = 0x0008;
-                    sys_delay_ms(10);
 					CM_GPIO->POSRA = 0x0002;
 					sys_delay_ms(10);
 					CM_GPIO->PORRA = 0x001E;
-                    lr_nec(0xAA, 0x13);
                     last_ir_heartbeat = sys_get_tick();
                     ir_comm_state = 1;  // 充电中
                     slave_status = I2C_STATUS_NORMAL;  // 通讯正常
@@ -263,6 +258,7 @@ void i2c_slave_ir_process(void)
                     break;
                     
                 case 0x55:  // 充电桩询问
+                    sys_delay_ms(100);
                     lr_nec(0xAA, 0x56);  // 回复
                     last_ir_heartbeat = sys_get_tick();
                     if (ir_comm_state == 1) {
@@ -288,7 +284,7 @@ void i2c_slave_ir_process(void)
     // 重定位状态处理
     if (ir_comm_state == 3) {
         lr_nec(0xAA, 0xFF); 
-        ability_robote_init();  
+        ability_robote_init(); 
         lr_init();
         lr_receive_init();
         sys_delay_ms(10);

@@ -216,10 +216,11 @@ void test(void)
 
 void i2c_master_test(void)
 {
-    i2c_master_send_cmd(I2C_CMD_TEST);
-    sys_delay_ms(2000);
-    i2c_master_send_cmd(I2C_CMD_RESET);
-    sys_delay_ms(2000);
+
+    i2c_master_send_cmd(I2C_CMD_CHARGE_START);
+    sys_delay_ms(5000);
+    i2c_master_send_cmd(I2C_CMD_CHARGE_COMPLETE);
+    sys_delay_ms(5000);
 
 
 
