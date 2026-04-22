@@ -17,7 +17,7 @@
 #define lr_nec_tall() do{ CM_TMRA_4->CMPAR4 =  82; CM_TMRA_4->PCONR4 = 0x1043u; } while(0)//低位
 #define lr_nec_low() do{  CM_TMRA_4->PCONR4 = 0x1243u; } while(0)//高位
 
-#define HEARTBEAT_TIMEOUT_TICK 15000 
+#define HEARTBEAT_TIMEOUT_TICK 30000 
 static volatile uint64_t last_heartbeat_time = 0;//上次心跳时间
 
 static volatile uint8_t lr_rx_state = 0;//0:等待起始 1:等待起始低电平结束 2:等待数据位低电平结束 3:等待数据位高电平结束，解码机状态
@@ -258,31 +258,29 @@ void Relay (void)
             {
                 case 0x11:
                     //到位
-                    
 					CM_GPIO->PORRB = 0x0060u;
 					CM_GPIO->PORRA = 0x0018u;
-					sys_delay_ms(10); 
-					CM_GPIO->POSRB = 0X0040U;
 					sys_delay_ms(10);
+					CM_GPIO->POSRB = 0X0040U;
 					CM_GPIO->POSRA = 0x0008u;
 					sys_delay_ms(10);
 					CM_GPIO->PORRB = 0x0060u;
 					CM_GPIO->PORRA = 0x0018u;
-					sys_delay_ms(100);
-					lr_nec(0xAA, 0x12);
+					sys_delay_ms(300);
+					lr_nec(0xAA, 0x13);
 					last_heartbeat_time = sys_get_tick();
 					state = 1;
                     break;
 
 
 				case 0xFF:
-					state = 3;
+					state = 3;	
 					break;
                 case 0xAA:
                     //完成
                     ability_init();
 					sys_delay_ms(100);
-					state = 2;
+					state = 2; 
                     break;
 				case 0x56:
 					if (state == 1)
@@ -305,7 +303,7 @@ void inquire (void)
 		
 		if (state == 1)
 		{
-			if (now - last_send_time >= 10000)
+			if (now - last_send_time >= 15000)
 			{
 				lr_nec(0xAA, 0x55);
 				last_send_time = now;

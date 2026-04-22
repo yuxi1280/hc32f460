@@ -19,8 +19,8 @@ void _pid_update(void)
 	static uint8_t step = 0;
     static uint64_t last_time = 0;
 
-	voltage_overload();
-	temperature_overload();
+	// voltage_overload();
+	// temperature_overload();
 
 
 
@@ -36,17 +36,20 @@ int main(void)
 	lr_init();
 	lr_receive_init();
 	pwmfly_init();
+
+	
 	// //机器人
-	//ability_robote_init();
+	ability_robote_init();
+
 
 	//从机
 	//i2c_slave_init();
 	//主机
-	//i2c_master_init(); 
+	i2c_master_init(); 
 	
 	////充电站
-	ability_init();
-	voltage_init();
+	// ability_init();
+	// voltage_init();
 
 
 	
@@ -101,8 +104,8 @@ int main(void)
 		//WDT_flash();
 		stimer_poll();
 		//充电站
-		Relay();
-		inquire();
+		// Relay();
+		// inquire();
 
 
 		//机器人
@@ -111,7 +114,7 @@ int main(void)
 		// i2c_slave_poll();      
         // i2c_slave_ir_process();
 
-		//i2c_master_test();
+		i2c_master_test();
 	
 	}
 }

@@ -1,12 +1,12 @@
 Archive member included to satisfy reference by file (symbol)
 
-d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
                               ../obj/ability.o (__aeabi_f2d)
-d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
                               ../obj/ability.o (__aeabi_ddiv)
-d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
                               ../obj/ability.o (__aeabi_d2f)
-d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
                               ../obj/rs485.o (memcpy)
 
 Discarded input sections
@@ -14,8 +14,16 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/ability.o
  .data          0x00000000        0x0 ../obj/ability.o
  .bss           0x00000000        0x0 ../obj/ability.o
- .text.ability_robote_init
-                0x00000000       0x2c ../obj/ability.o
+ .text.ability_init
+                0x00000000       0x3c ../obj/ability.o
+ .text.voltage_init
+                0x00000000       0x64 ../obj/ability.o
+ .text.voltage_get_adc
+                0x00000000       0x40 ../obj/ability.o
+ .text.voltage_get
+                0x00000000       0x68 ../obj/ability.o
+ .text.voltage_overload
+                0x00000000       0x9c ../obj/ability.o
  .text          0x00000000        0x0 ../obj/at24c02.o
  .data          0x00000000        0x0 ../obj/at24c02.o
  .bss           0x00000000        0x0 ../obj/at24c02.o
@@ -120,6 +128,12 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/hot.o
  .data          0x00000000        0x0 ../obj/hot.o
  .bss           0x00000000        0x0 ../obj/hot.o
+ .text.pwmfly_set_pwm
+                0x00000000       0x50 ../obj/hot.o
+ .text.temperature_get
+                0x00000000       0x40 ../obj/hot.o
+ .text.temperature_overload
+                0x00000000       0x74 ../obj/hot.o
  .text          0x00000000        0x0 ../obj/i2c_slave.o
  .data          0x00000000        0x0 ../obj/i2c_slave.o
  .bss           0x00000000        0x0 ../obj/i2c_slave.o
@@ -152,21 +166,21 @@ Discarded input sections
  .text.i2c_slave_get_status_changed
                 0x00000000       0x28 ../obj/i2c_slave.o
  .text.i2c_slave_ir_process
-                0x00000000      0x1a8 ../obj/i2c_slave.o
+                0x00000000      0x144 ../obj/i2c_slave.o
  .text.i2c_slave_set_status
                 0x00000000       0x20 ../obj/i2c_slave.o
  .text.i2c_slave_get_status
                 0x00000000       0x18 ../obj/i2c_slave.o
  .bss.last_send_time.0
                 0x00000000        0x8 ../obj/i2c_slave.o
- .debug_info    0x00000000     0x1a2d ../obj/i2c_slave.o
- .debug_abbrev  0x00000000      0x29b ../obj/i2c_slave.o
+ .debug_info    0x00000000     0x1a23 ../obj/i2c_slave.o
+ .debug_abbrev  0x00000000      0x2aa ../obj/i2c_slave.o
  .debug_aranges
                 0x00000000       0x70 ../obj/i2c_slave.o
  .debug_rnglists
                 0x00000000       0x52 ../obj/i2c_slave.o
- .debug_line    0x00000000      0x410 ../obj/i2c_slave.o
- .debug_str     0x00000000      0xda7 ../obj/i2c_slave.o
+ .debug_line    0x00000000      0x3e5 ../obj/i2c_slave.o
+ .debug_str     0x00000000      0xd8f ../obj/i2c_slave.o
  .comment       0x00000000       0x46 ../obj/i2c_slave.o
  .debug_frame   0x00000000      0x190 ../obj/i2c_slave.o
  .ARM.attributes
@@ -174,51 +188,33 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/i2cmaster.o
  .data          0x00000000        0x0 ../obj/i2cmaster.o
  .bss           0x00000000        0x0 ../obj/i2cmaster.o
- .text.i2c_master_init
-                0x00000000       0x60 ../obj/i2cmaster.o
- .text.i2c_wait_bus_idle
-                0x00000000       0x3c ../obj/i2cmaster.o
- .text.i2c_send_start
-                0x00000000       0x4c ../obj/i2cmaster.o
- .text.i2c_send_stop
-                0x00000000       0x4c ../obj/i2cmaster.o
- .text.i2c_send_addr
-                0x00000000       0x7c ../obj/i2cmaster.o
- .text.i2c_send_data
-                0x00000000       0x68 ../obj/i2cmaster.o
  .text.i2c_recv_data
                 0x00000000       0x60 ../obj/i2cmaster.o
- .text.i2c_master_send_cmd
-                0x00000000       0x78 ../obj/i2cmaster.o
  .text.i2c_master_read_status
                 0x00000000       0x7c ../obj/i2cmaster.o
  .text.i2c_master_cmd_and_read
                 0x00000000       0x48 ../obj/i2cmaster.o
  .text.test     0x00000000       0x3c ../obj/i2cmaster.o
- .text.i2c_master_test
-                0x00000000       0x24 ../obj/i2cmaster.o
- .debug_info    0x00000000     0x19d7 ../obj/i2cmaster.o
- .debug_abbrev  0x00000000      0x1b9 ../obj/i2cmaster.o
- .debug_aranges
-                0x00000000       0x78 ../obj/i2cmaster.o
- .debug_rnglists
-                0x00000000       0x55 ../obj/i2cmaster.o
- .debug_line    0x00000000      0x42c ../obj/i2cmaster.o
- .debug_str     0x00000000      0xcc3 ../obj/i2cmaster.o
- .comment       0x00000000       0x46 ../obj/i2cmaster.o
- .debug_frame   0x00000000      0x1c4 ../obj/i2cmaster.o
- .ARM.attributes
-                0x00000000       0x34 ../obj/i2cmaster.o
  .text          0x00000000        0x0 ../obj/io.o
  .data          0x00000000        0x0 ../obj/io.o
  .bss           0x00000000        0x0 ../obj/io.o
  .text          0x00000000        0x0 ../obj/lr.o
  .data          0x00000000        0x0 ../obj/lr.o
  .bss           0x00000000        0x0 ../obj/lr.o
+ .text.__NVIC_SystemReset
+                0x00000000       0x2c ../obj/lr.o
  .bss.robote_state
                 0x00000000        0x1 ../obj/lr.o
  .bss.last_receive_time
                 0x00000000        0x1 ../obj/lr.o
+ .bss.lr_data   0x00000000        0x3 ../obj/lr.o
+ .text.lr_nec   0x00000000       0xe0 ../obj/lr.o
+ .text.lr_get_data
+                0x00000000       0x80 ../obj/lr.o
+ .text.Relay    0x00000000       0xd4 ../obj/lr.o
+ .text.inquire  0x00000000       0xbc ../obj/lr.o
+ .bss.last_send_time.0
+                0x00000000        0x8 ../obj/lr.o
  .text          0x00000000        0x0 ../obj/main.o
  .data          0x00000000        0x0 ../obj/main.o
  .bss           0x00000000        0x0 ../obj/main.o
@@ -539,15 +535,33 @@ Discarded input sections
  .text          0x00000000        0x0 ../obj/startup_hc32f460.o
  .data          0x00000000        0x0 ../obj/startup_hc32f460.o
  .bss           0x00000000        0x0 ../obj/startup_hc32f460.o
- .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .text          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
- .data          0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
- .bss           0x00000000        0x0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+ .text          0x00000000      0x378 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_line_str
+                0x00000000       0xce f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00000000       0xac f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x00000000       0x22 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .text          0x00000000      0x424 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_line_str
+                0x00000000       0xce f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00000000       0x50 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x00000000       0x22 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .text          0x00000000       0xa0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .data          0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_line_str
+                0x00000000       0xce f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00000000       0x24 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .ARM.attributes
+                0x00000000       0x22 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .text          0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+ .data          0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
 
 Memory Configuration
 
@@ -585,12 +599,12 @@ LOAD ../obj/uart.o
 LOAD ../obj/ws2812.o
 LOAD ../obj/startup_hc32f460.o
 START GROUP
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a
 END GROUP
 START GROUP
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a
 END GROUP
 
 .vectors        0x00000000      0x3c0
@@ -606,380 +620,343 @@ END GROUP
  .icg_sec       0x00000400       0x20 ../obj/system_hc32f460.o
                 0x00000400                u32ICG
 
-.text           0x00000420     0x1e58
+.text           0x00000420     0x12ec
                 0x00000420                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000420      0x378 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-                0x00000420                __aeabi_drsub
-                0x00000428                __aeabi_dsub
-                0x00000428                __subdf3
-                0x0000042c                __aeabi_dadd
-                0x0000042c                __adddf3
-                0x000006a4                __floatunsidf
-                0x000006a4                __aeabi_ui2d
-                0x000006c4                __floatsidf
-                0x000006c4                __aeabi_i2d
-                0x000006e8                __aeabi_f2d
-                0x000006e8                __extendsfdf2
-                0x0000072c                __floatundidf
-                0x0000072c                __aeabi_ul2d
-                0x0000073c                __floatdidf
-                0x0000073c                __aeabi_l2d
- .text          0x00000798      0x424 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
-                0x00000798                __aeabi_dmul
-                0x00000798                __muldf3
-                0x000009ec                __divdf3
-                0x000009ec                __aeabi_ddiv
- .text          0x00000bbc       0xa0 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
-                0x00000bbc                __truncdfsf2
-                0x00000bbc                __aeabi_d2f
  *(.text*)
- .text.ability_init
-                0x00000c5c       0x3c ../obj/ability.o
-                0x00000c5c                ability_init
- .text.voltage_init
-                0x00000c98       0x64 ../obj/ability.o
-                0x00000c98                voltage_init
- .text.voltage_get_adc
-                0x00000cfc       0x40 ../obj/ability.o
-                0x00000cfc                voltage_get_adc
- *fill*         0x00000d3c        0x4 
- .text.voltage_get
-                0x00000d40       0x68 ../obj/ability.o
-                0x00000d40                voltage_get
- .text.voltage_overload
-                0x00000da8       0x9c ../obj/ability.o
-                0x00000da8                voltage_overload
+ .text.ability_robote_init
+                0x00000420       0x2c ../obj/ability.o
+                0x00000420                ability_robote_init
  .text.pwmfly_init
-                0x00000e44       0x60 ../obj/hot.o
-                0x00000e44                pwmfly_init
- .text.pwmfly_set_pwm
-                0x00000ea4       0x50 ../obj/hot.o
-                0x00000ea4                pwmfly_set_pwm
- .text.temperature_get
-                0x00000ef4       0x40 ../obj/hot.o
-                0x00000ef4                temperature_get
- .text.temperature_overload
-                0x00000f34       0x74 ../obj/hot.o
-                0x00000f34                temperature_overload
- .text.io_init  0x00000fa8      0x108 ../obj/io.o
-                0x00000fa8                io_init
+                0x0000044c       0x60 ../obj/hot.o
+                0x0000044c                pwmfly_init
+ .text.i2c_master_init
+                0x000004ac       0x60 ../obj/i2cmaster.o
+                0x000004ac                i2c_master_init
+ .text.i2c_wait_bus_idle
+                0x0000050c       0x3c ../obj/i2cmaster.o
+ .text.i2c_send_start
+                0x00000548       0x4c ../obj/i2cmaster.o
+ .text.i2c_send_stop
+                0x00000594       0x4c ../obj/i2cmaster.o
+ .text.i2c_send_addr
+                0x000005e0       0x7c ../obj/i2cmaster.o
+ .text.i2c_send_data
+                0x0000065c       0x68 ../obj/i2cmaster.o
+ .text.i2c_master_send_cmd
+                0x000006c4       0x78 ../obj/i2cmaster.o
+                0x000006c4                i2c_master_send_cmd
+ .text.i2c_master_test
+                0x0000073c       0x24 ../obj/i2cmaster.o
+                0x0000073c                i2c_master_test
+ .text.io_init  0x00000760      0x108 ../obj/io.o
+                0x00000760                io_init
  .text.__NVIC_EnableIRQ
-                0x000010b0       0x3c ../obj/lr.o
+                0x00000868       0x3c ../obj/lr.o
  .text.__NVIC_SetPriority
-                0x000010ec       0x54 ../obj/lr.o
- .text.__NVIC_SystemReset
-                0x00001140       0x2c ../obj/lr.o
+                0x000008a4       0x54 ../obj/lr.o
  .text.sys_delay_us
-                0x0000116c       0x50 ../obj/lr.o
-                0x0000116c                sys_delay_us
- .text.lr_init  0x000011bc       0x60 ../obj/lr.o
-                0x000011bc                lr_init
+                0x000008f8       0x50 ../obj/lr.o
+                0x000008f8                sys_delay_us
+ .text.lr_init  0x00000948       0x60 ../obj/lr.o
+                0x00000948                lr_init
  .text.lr_receive_init
-                0x0000121c       0xec ../obj/lr.o
-                0x0000121c                lr_receive_init
- .text.lr_nec   0x00001308       0xe0 ../obj/lr.o
-                0x00001308                lr_nec
+                0x000009a8       0xec ../obj/lr.o
+                0x000009a8                lr_receive_init
  .text.IRQ084_Handler
-                0x000013e8      0x19c ../obj/lr.o
-                0x000013e8                IRQ084_Handler
- .text.lr_get_data
-                0x00001584       0x80 ../obj/lr.o
-                0x00001584                lr_get_data
- .text.Relay    0x00001604       0xd8 ../obj/lr.o
-                0x00001604                Relay
- .text.inquire  0x000016dc       0xbc ../obj/lr.o
-                0x000016dc                inquire
+                0x00000a94      0x19c ../obj/lr.o
+                0x00000a94                IRQ084_Handler
  .text._pid_update
-                0x00001798       0x10 ../obj/main.o
-                0x00001798                _pid_update
- .text.main     0x000017a8       0x58 ../obj/main.o
-                0x000017a8                main
+                0x00000c30        0xe ../obj/main.o
+                0x00000c30                _pid_update
+ *fill*         0x00000c3e        0x2 
+ .text.main     0x00000c40       0x54 ../obj/main.o
+                0x00000c40                main
  .text.__msl_memcpy
-                0x00001800       0x3e ../obj/mix_std_lib.o
-                0x00001800                __msl_memcpy
+                0x00000c94       0x3e ../obj/mix_std_lib.o
+                0x00000c94                __msl_memcpy
  .text.c_queue_rx_buf_queue_t_full
-                0x0000183e       0x24 ../obj/rs485.o
-                0x0000183e                c_queue_rx_buf_queue_t_full
- *fill*         0x00001862        0x2 
+                0x00000cd2       0x24 ../obj/rs485.o
+                0x00000cd2                c_queue_rx_buf_queue_t_full
+ *fill*         0x00000cf6        0x2 
  .text.c_queue_rx_buf_queue_t_push
-                0x00001864       0x74 ../obj/rs485.o
-                0x00001864                c_queue_rx_buf_queue_t_push
+                0x00000cf8       0x74 ../obj/rs485.o
+                0x00000cf8                c_queue_rx_buf_queue_t_push
  .text.__set_rx_mode
-                0x000018d8       0x24 ../obj/rs485.o
+                0x00000d6c       0x24 ../obj/rs485.o
  .text.IRQ080_Handler
-                0x000018fc       0x84 ../obj/rs485.o
-                0x000018fc                IRQ080_Handler
+                0x00000d90       0x84 ../obj/rs485.o
+                0x00000d90                IRQ080_Handler
  .text.IRQ083_Handler
-                0x00001980       0x38 ../obj/rs485.o
-                0x00001980                IRQ083_Handler
+                0x00000e14       0x38 ../obj/rs485.o
+                0x00000e14                IRQ083_Handler
  .text.IRQ081_Handler
-                0x000019b8       0x7c ../obj/rs485.o
-                0x000019b8                IRQ081_Handler
+                0x00000e4c       0x7c ../obj/rs485.o
+                0x00000e4c                IRQ081_Handler
  .text.IRQ082_Handler
-                0x00001a34       0xbc ../obj/rs485.o
-                0x00001a34                IRQ082_Handler
+                0x00000ec8       0xbc ../obj/rs485.o
+                0x00000ec8                IRQ082_Handler
  .text.stimer_get_by_id
-                0x00001af0       0x54 ../obj/soft_timer.o
-                0x00001af0                stimer_get_by_id
+                0x00000f84       0x54 ../obj/soft_timer.o
+                0x00000f84                stimer_get_by_id
  .text.stimer_clear
-                0x00001b44       0x42 ../obj/soft_timer.o
-                0x00001b44                stimer_clear
- *fill*         0x00001b86        0x2 
+                0x00000fd8       0x42 ../obj/soft_timer.o
+                0x00000fd8                stimer_clear
+ *fill*         0x0000101a        0x2 
  .text.stimer_init
-                0x00001b88       0x50 ../obj/soft_timer.o
-                0x00001b88                stimer_init
+                0x0000101c       0x50 ../obj/soft_timer.o
+                0x0000101c                stimer_init
  .text.stimer_register
-                0x00001bd8       0x5c ../obj/soft_timer.o
-                0x00001bd8                stimer_register
+                0x0000106c       0x5c ../obj/soft_timer.o
+                0x0000106c                stimer_register
  .text.stimer_ctrl
-                0x00001c34       0xa0 ../obj/soft_timer.o
-                0x00001c34                stimer_ctrl
+                0x000010c8       0xa0 ../obj/soft_timer.o
+                0x000010c8                stimer_ctrl
  .text.stimer_poll
-                0x00001cd4       0xf4 ../obj/soft_timer.o
-                0x00001cd4                stimer_poll
+                0x00001168       0xf4 ../obj/soft_timer.o
+                0x00001168                stimer_poll
  .text.__NVIC_SetPriorityGrouping
-                0x00001dc8       0x48 ../obj/system_hc32f460.o
+                0x0000125c       0x48 ../obj/system_hc32f460.o
  .text.__NVIC_EnableIRQ
-                0x00001e10       0x3c ../obj/system_hc32f460.o
+                0x000012a4       0x3c ../obj/system_hc32f460.o
  .text.__NVIC_SetPriority
-                0x00001e4c       0x54 ../obj/system_hc32f460.o
+                0x000012e0       0x54 ../obj/system_hc32f460.o
  .text.sys_set_delay_clk
-                0x00001ea0       0x2c ../obj/system_hc32f460.o
-                0x00001ea0                sys_set_delay_clk
+                0x00001334       0x2c ../obj/system_hc32f460.o
+                0x00001334                sys_set_delay_clk
  .text._sys_delay_us
-                0x00001ecc       0x34 ../obj/system_hc32f460.o
-                0x00001ecc                _sys_delay_us
+                0x00001360       0x34 ../obj/system_hc32f460.o
+                0x00001360                _sys_delay_us
  .text.sys_clk_init
-                0x00001f00      0x124 ../obj/system_hc32f460.o
-                0x00001f00                sys_clk_init
+                0x00001394      0x124 ../obj/system_hc32f460.o
+                0x00001394                sys_clk_init
  .text.IRQ038_Handler
-                0x00002024       0x38 ../obj/system_hc32f460.o
-                0x00002024                IRQ038_Handler
+                0x000014b8       0x38 ../obj/system_hc32f460.o
+                0x000014b8                IRQ038_Handler
  .text.sys_tick_init
-                0x0000205c       0x8c ../obj/system_hc32f460.o
-                0x0000205c                sys_tick_init
+                0x000014f0       0x8c ../obj/system_hc32f460.o
+                0x000014f0                sys_tick_init
  .text.sys_init
-                0x000020e8       0x34 ../obj/system_hc32f460.o
-                0x000020e8                sys_init
+                0x0000157c       0x34 ../obj/system_hc32f460.o
+                0x0000157c                sys_init
  .text.sys_delay_ms
-                0x0000211c       0x50 ../obj/system_hc32f460.o
-                0x0000211c                sys_delay_ms
+                0x000015b0       0x50 ../obj/system_hc32f460.o
+                0x000015b0                sys_delay_ms
  .text.sys_get_tick
-                0x0000216c       0x34 ../obj/system_hc32f460.o
-                0x0000216c                sys_get_tick
+                0x00001600       0x34 ../obj/system_hc32f460.o
+                0x00001600                sys_get_tick
  .text.Reset_Handler
-                0x000021a0       0xb8 ../obj/startup_hc32f460.o
-                0x000021a0                Reset_Handler
+                0x00001634       0xb8 ../obj/startup_hc32f460.o
+                0x00001634                Reset_Handler
  .text.Default_Handler
-                0x00002258        0x4 ../obj/startup_hc32f460.o
-                0x00002258                IRQ132_Handler
-                0x00002258                DebugMon_Handler
-                0x00002258                IRQ113_Handler
-                0x00002258                IRQ031_Handler
-                0x00002258                IRQ099_Handler
-                0x00002258                HardFault_Handler
-                0x00002258                IRQ095_Handler
-                0x00002258                IRQ058_Handler
-                0x00002258                IRQ065_Handler
-                0x00002258                IRQ108_Handler
-                0x00002258                SysTick_Handler
-                0x00002258                IRQ139_Handler
-                0x00002258                IRQ138_Handler
-                0x00002258                IRQ012_Handler
-                0x00002258                IRQ093_Handler
-                0x00002258                IRQ056_Handler
-                0x00002258                IRQ019_Handler
-                0x00002258                PendSV_Handler
-                0x00002258                NMI_Handler
-                0x00002258                IRQ116_Handler
-                0x00002258                IRQ011_Handler
-                0x00002258                IRQ115_Handler
-                0x00002258                IRQ051_Handler
-                0x00002258                IRQ014_Handler
-                0x00002258                IRQ062_Handler
-                0x00002258                IRQ027_Handler
-                0x00002258                IRQ117_Handler
-                0x00002258                IRQ097_Handler
-                0x00002258                IRQ088_Handler
-                0x00002258                IRQ071_Handler
-                0x00002258                IRQ034_Handler
-                0x00002258                IRQ067_Handler
-                0x00002258                IRQ070_Handler
-                0x00002258                IRQ033_Handler
-                0x00002258                IRQ077_Handler
-                0x00002258                IRQ063_Handler
-                0x00002258                IRQ028_Handler
-                0x00002258                IRQ076_Handler
-                0x00002258                IRQ039_Handler
-                0x00002258                UsageFault_Handler
-                0x00002258                IRQ133_Handler
-                0x00002258                IRQ023_Handler
-                0x00002258                IRQ126_Handler
-                0x00002258                IRQ048_Handler
-                0x00002258                IRQ009_Handler
-                0x00002258                IRQ122_Handler
-                0x00002258                IRQ089_Handler
-                0x00002258                IRQ121_Handler
-                0x00002258                IRQ074_Handler
-                0x00002258                IRQ037_Handler
-                0x00002258                IRQ072_Handler
-                0x00002258                IRQ035_Handler
-                0x00002258                IRQ130_Handler
-                0x00002258                IRQ111_Handler
-                0x00002258                IRQ134_Handler
-                0x00002258                IRQ129_Handler
-                0x00002258                IRQ142_Handler
-                0x00002258                IRQ105_Handler
-                0x00002258                IRQ140_Handler
-                0x00002258                IRQ103_Handler
-                0x00002258                IRQ021_Handler
-                0x00002258                IRQ047_Handler
-                0x00002258                IRQ008_Handler
-                0x00002258                IRQ022_Handler
-                0x00002258                IRQ046_Handler
-                0x00002258                IRQ007_Handler
-                0x00002258                IRQ043_Handler
-                0x00002258                IRQ004_Handler
-                0x00002258                IRQ041_Handler
-                0x00002258                IRQ002_Handler
-                0x00002258                IRQ098_Handler
-                0x00002258                IRQ000_Handler
-                0x00002258                IRQ118_Handler
-                0x00002258                IRQ044_Handler
-                0x00002258                IRQ005_Handler
-                0x00002258                IRQ049_Handler
-                0x00002258                IRQ045_Handler
-                0x00002258                IRQ006_Handler
-                0x00002258                IRQ125_Handler
-                0x00002258                IRQ102_Handler
-                0x00002258                IRQ107_Handler
-                0x00002258                IRQ112_Handler
-                0x00002258                IRQ052_Handler
-                0x00002258                IRQ015_Handler
-                0x00002258                MemManage_Handler
-                0x00002258                IRQ143_Handler
-                0x00002258                IRQ106_Handler
-                0x00002258                SVC_Handler
-                0x00002258                IRQ128_Handler
-                0x00002258                IRQ124_Handler
-                0x00002258                IRQ136_Handler
-                0x00002258                IRQ040_Handler
-                0x00002258                IRQ001_Handler
-                0x00002258                IRQ123_Handler
-                0x00002258                IRQ010_Handler
-                0x00002258                IRQ068_Handler
-                0x00002258                IRQ096_Handler
-                0x00002258                IRQ059_Handler
-                0x00002258                IRQ131_Handler
-                0x00002258                IRQ042_Handler
-                0x00002258                IRQ003_Handler
-                0x00002258                IRQ024_Handler
-                0x00002258                IRQ141_Handler
-                0x00002258                IRQ104_Handler
-                0x00002258                IRQ101_Handler
-                0x00002258                IRQ090_Handler
-                0x00002258                IRQ053_Handler
-                0x00002258                IRQ016_Handler
-                0x00002258                IRQ078_Handler
-                0x00002258                IRQ032_Handler
-                0x00002258                IRQ020_Handler
-                0x00002258                IRQ073_Handler
-                0x00002258                IRQ036_Handler
-                0x00002258                IRQ092_Handler
-                0x00002258                IRQ055_Handler
-                0x00002258                IRQ018_Handler
-                0x00002258                IRQ087_Handler
-                0x00002258                IRQ109_Handler
-                0x00002258                IRQ061_Handler
-                0x00002258                IRQ026_Handler
-                0x00002258                IRQ060_Handler
-                0x00002258                IRQ025_Handler
-                0x00002258                IRQ085_Handler
-                0x00002258                IRQ119_Handler
-                0x00002258                IRQ137_Handler
-                0x00002258                IRQ110_Handler
-                0x00002258                IRQ050_Handler
-                0x00002258                IRQ013_Handler
-                0x00002258                IRQ030_Handler
-                0x00002258                IRQ064_Handler
-                0x00002258                IRQ029_Handler
-                0x00002258                IRQ127_Handler
-                0x00002258                IRQ066_Handler
-                0x00002258                IRQ091_Handler
-                0x00002258                IRQ054_Handler
-                0x00002258                IRQ017_Handler
-                0x00002258                BusFault_Handler
-                0x00002258                IRQ075_Handler
-                0x00002258                IRQ069_Handler
-                0x00002258                IRQ114_Handler
-                0x00002258                IRQ086_Handler
-                0x00002258                IRQ094_Handler
-                0x00002258                IRQ057_Handler
-                0x00002258                IRQ135_Handler
-                0x00002258                IRQ100_Handler
-                0x00002258                IRQ120_Handler
-                0x00002258                IRQ079_Handler
- .text.memcpy   0x0000225c       0x1c d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
-                0x0000225c                memcpy
+                0x000016ec        0x4 ../obj/startup_hc32f460.o
+                0x000016ec                IRQ132_Handler
+                0x000016ec                DebugMon_Handler
+                0x000016ec                IRQ113_Handler
+                0x000016ec                IRQ031_Handler
+                0x000016ec                IRQ099_Handler
+                0x000016ec                HardFault_Handler
+                0x000016ec                IRQ095_Handler
+                0x000016ec                IRQ058_Handler
+                0x000016ec                IRQ065_Handler
+                0x000016ec                IRQ108_Handler
+                0x000016ec                SysTick_Handler
+                0x000016ec                IRQ139_Handler
+                0x000016ec                IRQ138_Handler
+                0x000016ec                IRQ012_Handler
+                0x000016ec                IRQ093_Handler
+                0x000016ec                IRQ056_Handler
+                0x000016ec                IRQ019_Handler
+                0x000016ec                PendSV_Handler
+                0x000016ec                NMI_Handler
+                0x000016ec                IRQ116_Handler
+                0x000016ec                IRQ011_Handler
+                0x000016ec                IRQ115_Handler
+                0x000016ec                IRQ051_Handler
+                0x000016ec                IRQ014_Handler
+                0x000016ec                IRQ062_Handler
+                0x000016ec                IRQ027_Handler
+                0x000016ec                IRQ117_Handler
+                0x000016ec                IRQ097_Handler
+                0x000016ec                IRQ088_Handler
+                0x000016ec                IRQ071_Handler
+                0x000016ec                IRQ034_Handler
+                0x000016ec                IRQ067_Handler
+                0x000016ec                IRQ070_Handler
+                0x000016ec                IRQ033_Handler
+                0x000016ec                IRQ077_Handler
+                0x000016ec                IRQ063_Handler
+                0x000016ec                IRQ028_Handler
+                0x000016ec                IRQ076_Handler
+                0x000016ec                IRQ039_Handler
+                0x000016ec                UsageFault_Handler
+                0x000016ec                IRQ133_Handler
+                0x000016ec                IRQ023_Handler
+                0x000016ec                IRQ126_Handler
+                0x000016ec                IRQ048_Handler
+                0x000016ec                IRQ009_Handler
+                0x000016ec                IRQ122_Handler
+                0x000016ec                IRQ089_Handler
+                0x000016ec                IRQ121_Handler
+                0x000016ec                IRQ074_Handler
+                0x000016ec                IRQ037_Handler
+                0x000016ec                IRQ072_Handler
+                0x000016ec                IRQ035_Handler
+                0x000016ec                IRQ130_Handler
+                0x000016ec                IRQ111_Handler
+                0x000016ec                IRQ134_Handler
+                0x000016ec                IRQ129_Handler
+                0x000016ec                IRQ142_Handler
+                0x000016ec                IRQ105_Handler
+                0x000016ec                IRQ140_Handler
+                0x000016ec                IRQ103_Handler
+                0x000016ec                IRQ021_Handler
+                0x000016ec                IRQ047_Handler
+                0x000016ec                IRQ008_Handler
+                0x000016ec                IRQ022_Handler
+                0x000016ec                IRQ046_Handler
+                0x000016ec                IRQ007_Handler
+                0x000016ec                IRQ043_Handler
+                0x000016ec                IRQ004_Handler
+                0x000016ec                IRQ041_Handler
+                0x000016ec                IRQ002_Handler
+                0x000016ec                IRQ098_Handler
+                0x000016ec                IRQ000_Handler
+                0x000016ec                IRQ118_Handler
+                0x000016ec                IRQ044_Handler
+                0x000016ec                IRQ005_Handler
+                0x000016ec                IRQ049_Handler
+                0x000016ec                IRQ045_Handler
+                0x000016ec                IRQ006_Handler
+                0x000016ec                IRQ125_Handler
+                0x000016ec                IRQ102_Handler
+                0x000016ec                IRQ107_Handler
+                0x000016ec                IRQ112_Handler
+                0x000016ec                IRQ052_Handler
+                0x000016ec                IRQ015_Handler
+                0x000016ec                MemManage_Handler
+                0x000016ec                IRQ143_Handler
+                0x000016ec                IRQ106_Handler
+                0x000016ec                SVC_Handler
+                0x000016ec                IRQ128_Handler
+                0x000016ec                IRQ124_Handler
+                0x000016ec                IRQ136_Handler
+                0x000016ec                IRQ040_Handler
+                0x000016ec                IRQ001_Handler
+                0x000016ec                IRQ123_Handler
+                0x000016ec                IRQ010_Handler
+                0x000016ec                IRQ068_Handler
+                0x000016ec                IRQ096_Handler
+                0x000016ec                IRQ059_Handler
+                0x000016ec                IRQ131_Handler
+                0x000016ec                IRQ042_Handler
+                0x000016ec                IRQ003_Handler
+                0x000016ec                IRQ024_Handler
+                0x000016ec                IRQ141_Handler
+                0x000016ec                IRQ104_Handler
+                0x000016ec                IRQ101_Handler
+                0x000016ec                IRQ090_Handler
+                0x000016ec                IRQ053_Handler
+                0x000016ec                IRQ016_Handler
+                0x000016ec                IRQ078_Handler
+                0x000016ec                IRQ032_Handler
+                0x000016ec                IRQ020_Handler
+                0x000016ec                IRQ073_Handler
+                0x000016ec                IRQ036_Handler
+                0x000016ec                IRQ092_Handler
+                0x000016ec                IRQ055_Handler
+                0x000016ec                IRQ018_Handler
+                0x000016ec                IRQ087_Handler
+                0x000016ec                IRQ109_Handler
+                0x000016ec                IRQ061_Handler
+                0x000016ec                IRQ026_Handler
+                0x000016ec                IRQ060_Handler
+                0x000016ec                IRQ025_Handler
+                0x000016ec                IRQ085_Handler
+                0x000016ec                IRQ119_Handler
+                0x000016ec                IRQ137_Handler
+                0x000016ec                IRQ110_Handler
+                0x000016ec                IRQ050_Handler
+                0x000016ec                IRQ013_Handler
+                0x000016ec                IRQ030_Handler
+                0x000016ec                IRQ064_Handler
+                0x000016ec                IRQ029_Handler
+                0x000016ec                IRQ127_Handler
+                0x000016ec                IRQ066_Handler
+                0x000016ec                IRQ091_Handler
+                0x000016ec                IRQ054_Handler
+                0x000016ec                IRQ017_Handler
+                0x000016ec                BusFault_Handler
+                0x000016ec                IRQ075_Handler
+                0x000016ec                IRQ069_Handler
+                0x000016ec                IRQ114_Handler
+                0x000016ec                IRQ086_Handler
+                0x000016ec                IRQ094_Handler
+                0x000016ec                IRQ057_Handler
+                0x000016ec                IRQ135_Handler
+                0x000016ec                IRQ100_Handler
+                0x000016ec                IRQ120_Handler
+                0x000016ec                IRQ079_Handler
+ .text.memcpy   0x000016f0       0x1c f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+                0x000016f0                memcpy
  *(.glue_7)
- .glue_7        0x00002278        0x0 linker stubs
+ .glue_7        0x0000170c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00002278        0x0 linker stubs
+ .glue_7t       0x0000170c        0x0 linker stubs
  *(.eh_frame)
  *(.init)
  *(.fini)
-                0x00002278                        . = ALIGN (0x4)
+                0x0000170c                        . = ALIGN (0x4)
 
-.vfp11_veneer   0x00002278        0x0
- .vfp11_veneer  0x00002278        0x0 linker stubs
+.vfp11_veneer   0x0000170c        0x0
+ .vfp11_veneer  0x0000170c        0x0 linker stubs
 
-.v4_bx          0x00002278        0x0
- .v4_bx         0x00002278        0x0 linker stubs
+.v4_bx          0x0000170c        0x0
+ .v4_bx         0x0000170c        0x0 linker stubs
 
-.iplt           0x00002278        0x0
- .iplt          0x00002278        0x0 ../obj/ability.o
+.iplt           0x0000170c        0x0
+ .iplt          0x0000170c        0x0 ../obj/ability.o
 
-.rel.dyn        0x00002278        0x0
- .rel.iplt      0x00002278        0x0 ../obj/ability.o
+.rel.dyn        0x0000170c        0x0
+ .rel.iplt      0x0000170c        0x0 ../obj/ability.o
 
-.rodata         0x00002278        0x0
-                0x00002278                        . = ALIGN (0x4)
+.rodata         0x0000170c        0x0
+                0x0000170c                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x00002278                        . = ALIGN (0x4)
+                0x0000170c                        . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00002278                        __exidx_start = .
+                0x0000170c                        __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00002278                        __exidx_end = .
+                0x0000170c                        __exidx_end = .
 
-.preinit_array  0x00002278        0x0
-                0x00002278                        . = ALIGN (0x4)
+.preinit_array  0x0000170c        0x0
+                0x0000170c                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end = .)
-                0x00002278                        . = ALIGN (0x4)
+                0x0000170c                        . = ALIGN (0x4)
 
-.init_array     0x00002278        0x0
-                0x00002278                        . = ALIGN (0x4)
+.init_array     0x0000170c        0x0
+                0x0000170c                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
                 [!provide]                        PROVIDE (__init_array_end = .)
-                0x00002278                        . = ALIGN (0x4)
+                0x0000170c                        . = ALIGN (0x4)
 
-.fini_array     0x00002278        0x0
-                0x00002278                        . = ALIGN (0x4)
+.fini_array     0x0000170c        0x0
+                0x0000170c                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x00002278                        . = ALIGN (0x4)
-                0x00002278                        __etext = ALIGN (0x4)
+                0x0000170c                        . = ALIGN (0x4)
+                0x0000170c                        __etext = ALIGN (0x4)
 
 .otp_sec
  *(.otp_sec)
@@ -987,7 +964,7 @@ END GROUP
 .otp_lock_sec
  *(.otp_lock_sec)
 
-.data           0x1fff8000        0x4 load address 0x00002278
+.data           0x1fff8000        0x4 load address 0x0000170c
                 0x1fff8000                        . = ALIGN (0x4)
                 0x1fff8000                        __data_start__ = .
  *(vtable)
@@ -1001,12 +978,12 @@ END GROUP
  *(.ramfunc*)
                 0x1fff8004                        . = ALIGN (0x4)
                 0x1fff8004                        __data_end__ = .
-                0x0000227c                        __etext_ret_ram = (__etext + ALIGN (SIZEOF (.data), 0x4))
+                0x00001710                        __etext_ret_ram = (__etext + ALIGN (SIZEOF (.data), 0x4))
 
-.igot.plt       0x1fff8004        0x0 load address 0x0000227c
+.igot.plt       0x1fff8004        0x0 load address 0x00001710
  .igot.plt      0x1fff8004        0x0 ../obj/ability.o
 
-.ret_ram_data   0x200f0000        0x0 load address 0x0000227c
+.ret_ram_data   0x200f0000        0x0 load address 0x00001710
                 0x200f0000                        . = ALIGN (0x4)
                 0x200f0000                        __data_start_ret_ram__ = .
  *(.ret_ram_data)
@@ -1014,7 +991,7 @@ END GROUP
                 0x200f0000                        . = ALIGN (0x4)
                 0x200f0000                        __data_end_ret_ram__ = .
 
-.bss            0x1fff8008      0x64c load address 0x00002280
+.bss            0x1fff8008      0x644 load address 0x00001718
                 0x1fff8008                        . = ALIGN (0x4)
                 0x1fff8008                        _sbss = .
                 0x1fff8008                        __bss_start__ = _sbss
@@ -1036,26 +1013,22 @@ END GROUP
                 0x1fff8020        0x8 ../obj/lr.o
  .bss.state     0x1fff8028        0x1 ../obj/lr.o
  *fill*         0x1fff8029        0x3 
- .bss.lr_data   0x1fff802c        0x3 ../obj/lr.o
-                0x1fff802c                lr_data
- *fill*         0x1fff802f        0x1 
- .bss.last_send_time.0
-                0x1fff8030        0x8 ../obj/lr.o
- .bss.rbq       0x1fff8038       0xd4 ../obj/rs485.o
-                0x1fff8038                rbq
+ .bss.rbq       0x1fff802c       0xd4 ../obj/rs485.o
+                0x1fff802c                rbq
  .bss.rs485_uart
-                0x1fff810c       0x3c ../obj/rs485.o
- .bss.st_array  0x1fff8148      0x500 ../obj/soft_timer.o
+                0x1fff8100       0x3c ../obj/rs485.o
+ *fill*         0x1fff813c        0x4 
+ .bss.st_array  0x1fff8140      0x500 ../obj/soft_timer.o
  .bss.sys_tick_msb
-                0x1fff8648        0x8 ../obj/system_hc32f460.o
-                0x1fff8648                sys_tick_msb
+                0x1fff8640        0x8 ../obj/system_hc32f460.o
+                0x1fff8640                sys_tick_msb
  .bss.sys_delay_tick
-                0x1fff8650        0x4 ../obj/system_hc32f460.o
-                0x1fff8650                sys_delay_tick
+                0x1fff8648        0x4 ../obj/system_hc32f460.o
+                0x1fff8648                sys_delay_tick
  *(COMMON)
-                0x1fff8654                        . = ALIGN (0x4)
-                0x1fff8654                        _ebss = .
-                0x1fff8654                        __bss_end__ = _ebss
+                0x1fff864c                        . = ALIGN (0x4)
+                0x1fff864c                        _ebss = .
+                0x1fff864c                        __bss_end__ = _ebss
 
 .ret_ram_bss    0x200f0000        0x0
                 0x200f0000                        . = ALIGN (0x4)
@@ -1065,21 +1038,21 @@ END GROUP
                 0x200f0000                        . = ALIGN (0x4)
                 0x200f0000                        __bss_end_ret_ram__ = .
 
-.heap_stack     0x1fff8658     0x1000
-                0x1fff8658                        . = ALIGN (0x8)
-                0x1fff8658                        __end__ = .
+.heap_stack     0x1fff8650     0x1000
+                0x1fff8650                        . = ALIGN (0x8)
+                0x1fff8650                        __end__ = .
                 [!provide]                        PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
  *(.heap*)
- .heap          0x1fff8658      0xc00 ../obj/startup_hc32f460.o
-                0x1fff8658                __HeapBase
-                0x1fff9258                        . = ALIGN (0x8)
-                0x1fff9258                        __HeapLimit = .
-                0x1fff9258                        __StackLimit = .
+ .heap          0x1fff8650      0xc00 ../obj/startup_hc32f460.o
+                0x1fff8650                __HeapBase
+                0x1fff9250                        . = ALIGN (0x8)
+                0x1fff9250                        __HeapLimit = .
+                0x1fff9250                        __StackLimit = .
  *(.stack*)
- .stack         0x1fff9258      0x400 ../obj/startup_hc32f460.o
-                0x1fff9658                        . = ALIGN (0x8)
-                0x1fff9658                        __StackTop = .
+ .stack         0x1fff9250      0x400 ../obj/startup_hc32f460.o
+                0x1fff9650                        . = ALIGN (0x8)
+                0x1fff9650                        __StackTop = .
 
 /DISCARD/
  libc.a(*)
@@ -1094,29 +1067,25 @@ END GROUP
  .ARM.attributes
                 0x00000034       0x34 ../obj/hot.o
  .ARM.attributes
-                0x00000068       0x34 ../obj/io.o
+                0x00000068       0x34 ../obj/i2cmaster.o
  .ARM.attributes
-                0x0000009c       0x34 ../obj/lr.o
+                0x0000009c       0x34 ../obj/io.o
  .ARM.attributes
-                0x000000d0       0x34 ../obj/main.o
+                0x000000d0       0x34 ../obj/lr.o
  .ARM.attributes
-                0x00000104       0x34 ../obj/mix_std_lib.o
+                0x00000104       0x34 ../obj/main.o
  .ARM.attributes
-                0x00000138       0x34 ../obj/rs485.o
+                0x00000138       0x34 ../obj/mix_std_lib.o
  .ARM.attributes
-                0x0000016c       0x34 ../obj/soft_timer.o
+                0x0000016c       0x34 ../obj/rs485.o
  .ARM.attributes
-                0x000001a0       0x34 ../obj/system_hc32f460.o
+                0x000001a0       0x34 ../obj/soft_timer.o
  .ARM.attributes
-                0x000001d4       0x25 ../obj/startup_hc32f460.o
+                0x000001d4       0x34 ../obj/system_hc32f460.o
  .ARM.attributes
-                0x000001f9       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x00000208       0x25 ../obj/startup_hc32f460.o
  .ARM.attributes
-                0x0000021b       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .ARM.attributes
-                0x0000023d       0x22 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .ARM.attributes
-                0x0000025f       0x34 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+                0x0000022d       0x34 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
                 [!provide]                        PROVIDE (_stack = __StackTop)
                 [!provide]                        PROVIDE (_Min_Heap_Size = (__HeapLimit - __HeapBase))
                 [!provide]                        PROVIDE (_Min_Stack_Size = (__StackTop - __StackLimit))
@@ -1124,108 +1093,118 @@ END GROUP
                 0x00000001                        ASSERT ((__StackTop <= __RamEnd), region RAM overflowed with stack)
 OUTPUT(../obj/EPC_DCBM.elf elf32-littlearm)
 LOAD linker stubs
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc.a
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libm.a
-LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libm.a
+LOAD f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000     0xf9f9
+.debug_info     0x00000000    0x113bb
  .debug_info    0x00000000     0x13ff ../obj/ability.o
  .debug_info    0x000013ff     0x1660 ../obj/hot.o
- .debug_info    0x00002a5f      0xcd2 ../obj/io.o
- .debug_info    0x00003731     0x3abe ../obj/lr.o
- .debug_info    0x000071ef      0x230 ../obj/main.o
- .debug_info    0x0000741f      0x711 ../obj/mix_std_lib.o
- .debug_info    0x00007b30     0x3bcc ../obj/rs485.o
- .debug_info    0x0000b6fc      0x34a ../obj/soft_timer.o
- .debug_info    0x0000ba46     0x3fb3 ../obj/system_hc32f460.o
+ .debug_info    0x00002a5f     0x19d7 ../obj/i2cmaster.o
+ .debug_info    0x00004436      0xcd2 ../obj/io.o
+ .debug_info    0x00005108     0x3abe ../obj/lr.o
+ .debug_info    0x00008bc6      0x21b ../obj/main.o
+ .debug_info    0x00008de1      0x711 ../obj/mix_std_lib.o
+ .debug_info    0x000094f2     0x3bcc ../obj/rs485.o
+ .debug_info    0x0000d0be      0x34a ../obj/soft_timer.o
+ .debug_info    0x0000d408     0x3fb3 ../obj/system_hc32f460.o
 
-.debug_abbrev   0x00000000     0x11ba
+.debug_abbrev   0x00000000     0x1373
  .debug_abbrev  0x00000000      0x177 ../obj/ability.o
  .debug_abbrev  0x00000177      0x15b ../obj/hot.o
- .debug_abbrev  0x000002d2       0xbd ../obj/io.o
- .debug_abbrev  0x0000038f      0x309 ../obj/lr.o
- .debug_abbrev  0x00000698      0x11f ../obj/main.o
- .debug_abbrev  0x000007b7      0x262 ../obj/mix_std_lib.o
- .debug_abbrev  0x00000a19      0x3d1 ../obj/rs485.o
- .debug_abbrev  0x00000dea      0x190 ../obj/soft_timer.o
- .debug_abbrev  0x00000f7a      0x240 ../obj/system_hc32f460.o
+ .debug_abbrev  0x000002d2      0x1b9 ../obj/i2cmaster.o
+ .debug_abbrev  0x0000048b       0xbd ../obj/io.o
+ .debug_abbrev  0x00000548      0x309 ../obj/lr.o
+ .debug_abbrev  0x00000851      0x11f ../obj/main.o
+ .debug_abbrev  0x00000970      0x262 ../obj/mix_std_lib.o
+ .debug_abbrev  0x00000bd2      0x3d1 ../obj/rs485.o
+ .debug_abbrev  0x00000fa3      0x190 ../obj/soft_timer.o
+ .debug_abbrev  0x00001133      0x240 ../obj/system_hc32f460.o
 
-.debug_aranges  0x00000000      0x348
+.debug_aranges  0x00000000      0x3c0
  .debug_aranges
                 0x00000000       0x48 ../obj/ability.o
  .debug_aranges
                 0x00000048       0x38 ../obj/hot.o
  .debug_aranges
-                0x00000080       0x20 ../obj/io.o
+                0x00000080       0x78 ../obj/i2cmaster.o
  .debug_aranges
-                0x000000a0       0x70 ../obj/lr.o
+                0x000000f8       0x20 ../obj/io.o
  .debug_aranges
-                0x00000110       0x28 ../obj/main.o
+                0x00000118       0x70 ../obj/lr.o
  .debug_aranges
-                0x00000138       0x58 ../obj/mix_std_lib.o
+                0x00000188       0x28 ../obj/main.o
  .debug_aranges
-                0x00000190       0xd8 ../obj/rs485.o
+                0x000001b0       0x58 ../obj/mix_std_lib.o
  .debug_aranges
-                0x00000268       0x58 ../obj/soft_timer.o
+                0x00000208       0xd8 ../obj/rs485.o
  .debug_aranges
-                0x000002c0       0x88 ../obj/system_hc32f460.o
+                0x000002e0       0x58 ../obj/soft_timer.o
+ .debug_aranges
+                0x00000338       0x88 ../obj/system_hc32f460.o
 
 .debug_rnglists
-                0x00000000      0x26c
+                0x00000000      0x2c1
  .debug_rnglists
                 0x00000000       0x32 ../obj/ability.o
  .debug_rnglists
                 0x00000032       0x25 ../obj/hot.o
  .debug_rnglists
-                0x00000057       0x14 ../obj/io.o
+                0x00000057       0x55 ../obj/i2cmaster.o
  .debug_rnglists
-                0x0000006b       0x55 ../obj/lr.o
+                0x000000ac       0x14 ../obj/io.o
  .debug_rnglists
-                0x000000c0       0x19 ../obj/main.o
+                0x000000c0       0x55 ../obj/lr.o
  .debug_rnglists
-                0x000000d9       0x4f ../obj/mix_std_lib.o
+                0x00000115       0x19 ../obj/main.o
  .debug_rnglists
-                0x00000128       0xa2 ../obj/rs485.o
+                0x0000012e       0x4f ../obj/mix_std_lib.o
  .debug_rnglists
-                0x000001ca       0x3f ../obj/soft_timer.o
+                0x0000017d       0xa2 ../obj/rs485.o
  .debug_rnglists
-                0x00000209       0x63 ../obj/system_hc32f460.o
+                0x0000021f       0x3f ../obj/soft_timer.o
+ .debug_rnglists
+                0x0000025e       0x63 ../obj/system_hc32f460.o
 
-.debug_line     0x00000000     0x298b
+.debug_line     0x00000000     0x2dbe
  .debug_line    0x00000000      0x2b9 ../obj/ability.o
  .debug_line    0x000002b9      0x214 ../obj/hot.o
- .debug_line    0x000004cd      0x1cc ../obj/io.o
- .debug_line    0x00000699      0x598 ../obj/lr.o
- .debug_line    0x00000c31      0x1a0 ../obj/main.o
- .debug_line    0x00000dd1      0x9f9 ../obj/mix_std_lib.o
- .debug_line    0x000017ca      0xa14 ../obj/rs485.o
- .debug_line    0x000021de      0x34a ../obj/soft_timer.o
- .debug_line    0x00002528      0x463 ../obj/system_hc32f460.o
+ .debug_line    0x000004cd      0x42c ../obj/i2cmaster.o
+ .debug_line    0x000008f9      0x1cc ../obj/io.o
+ .debug_line    0x00000ac5      0x595 ../obj/lr.o
+ .debug_line    0x0000105a      0x1aa ../obj/main.o
+ .debug_line    0x00001204      0x9f9 ../obj/mix_std_lib.o
+ .debug_line    0x00001bfd      0xa14 ../obj/rs485.o
+ .debug_line    0x00002611      0x34a ../obj/soft_timer.o
+ .debug_line    0x0000295b      0x463 ../obj/system_hc32f460.o
 
-.debug_str      0x00000000     0x5ff3
+.debug_str      0x00000000     0x63da
  .debug_str     0x00000000      0x9d7 ../obj/ability.o
                                 0xa35 (size before relaxing)
- .debug_str     0x000009d7      0x668 ../obj/hot.o
+ .debug_str     0x000009d7      0x65c ../obj/hot.o
                                 0xab5 (size before relaxing)
- .debug_str     0x0000103f       0x14 ../obj/io.o
+ .debug_str     0x00001033      0x3e9 ../obj/i2cmaster.o
+                                0xcc3 (size before relaxing)
+ .debug_str     0x0000141c       0x14 ../obj/io.o
                                 0x7b3 (size before relaxing)
- .debug_str     0x00001053     0x2116 ../obj/lr.o
+ .debug_str     0x00001430     0x2111 ../obj/lr.o
                                0x3037 (size before relaxing)
- .debug_str     0x00003169       0x8a ../obj/main.o
-                                0x2e1 (size before relaxing)
- .debug_str     0x000031f3      0x206 ../obj/mix_std_lib.o
+ .debug_str     0x00003541       0xaa ../obj/main.o
+                                0x2c7 (size before relaxing)
+ .debug_str     0x000035eb      0x206 ../obj/mix_std_lib.o
                                 0x40c (size before relaxing)
- .debug_str     0x000033f9     0x1280 ../obj/rs485.o
+ .debug_str     0x000037f1     0x126f ../obj/rs485.o
                                0x22db (size before relaxing)
- .debug_str     0x00004679       0x6c ../obj/soft_timer.o
+ .debug_str     0x00004a60       0x6c ../obj/soft_timer.o
                                 0x2bf (size before relaxing)
- .debug_str     0x000046e5     0x190e ../obj/system_hc32f460.o
+ .debug_str     0x00004acc     0x190e ../obj/system_hc32f460.o
                                0x426b (size before relaxing)
 
 .comment        0x00000000       0x45
  .comment       0x00000000       0x45 ../obj/ability.o
                                  0x46 (size before relaxing)
  .comment       0x00000045       0x46 ../obj/hot.o
+ .comment       0x00000045       0x46 ../obj/i2cmaster.o
  .comment       0x00000045       0x46 ../obj/io.o
  .comment       0x00000045       0x46 ../obj/lr.o
  .comment       0x00000045       0x46 ../obj/main.o
@@ -1234,29 +1213,18 @@ LOAD d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib
  .comment       0x00000045       0x46 ../obj/soft_timer.o
  .comment       0x00000045       0x46 ../obj/system_hc32f460.o
 
-.debug_frame    0x00000000      0xcf4
+.debug_frame    0x00000000      0xd9c
  .debug_frame   0x00000000       0xd4 ../obj/ability.o
  .debug_frame   0x000000d4       0xa4 ../obj/hot.o
- .debug_frame   0x00000178       0x30 ../obj/io.o
- .debug_frame   0x000001a8      0x198 ../obj/lr.o
- .debug_frame   0x00000340       0x4c ../obj/main.o
- .debug_frame   0x0000038c      0x16c ../obj/mix_std_lib.o
- .debug_frame   0x000004f8      0x374 ../obj/rs485.o
- .debug_frame   0x0000086c      0x140 ../obj/soft_timer.o
- .debug_frame   0x000009ac      0x200 ../obj/system_hc32f460.o
- .debug_frame   0x00000bac       0xac d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00000c58       0x50 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00000ca8       0x24 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00000ccc       0x28 d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
-
-.debug_line_str
-                0x00000000       0xce
- .debug_line_str
-                0x00000000       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_line_str
-                0x000000ce       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_line_str
-                0x000000ce       0xce d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00000178      0x1c4 ../obj/i2cmaster.o
+ .debug_frame   0x0000033c       0x30 ../obj/io.o
+ .debug_frame   0x0000036c      0x198 ../obj/lr.o
+ .debug_frame   0x00000504       0x50 ../obj/main.o
+ .debug_frame   0x00000554      0x16c ../obj/mix_std_lib.o
+ .debug_frame   0x000006c0      0x374 ../obj/rs485.o
+ .debug_frame   0x00000a34      0x140 ../obj/soft_timer.o
+ .debug_frame   0x00000b74      0x200 ../obj/system_hc32f460.o
+ .debug_frame   0x00000d74       0x28 f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
 
 Cross Reference Table
 
@@ -1414,7 +1382,6 @@ NMI_Handler                                       ../obj/startup_hc32f460.o
 PORT_IN_init                                      ../obj/system_hc32f460.o
 PendSV_Handler                                    ../obj/startup_hc32f460.o
 Relay                                             ../obj/lr.o
-                                                  ../obj/main.o
 Reset_Handler                                     ../obj/startup_hc32f460.o
 SVC_Handler                                       ../obj/startup_hc32f460.o
 SysTick_Handler                                   ../obj/startup_hc32f460.o
@@ -1428,21 +1395,21 @@ __StackTop                                        ../obj/startup_hc32f460.o
 __Vectors                                         ../obj/startup_hc32f460.o
 __Vectors_End                                     ../obj/startup_hc32f460.o
 __Vectors_Size                                    ../obj/startup_hc32f460.o
-__adddf3                                          d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_d2f                                       d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+__adddf3                                          f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_d2f                                       f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
                                                   ../obj/ability.o
-__aeabi_dadd                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_ddiv                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+__aeabi_dadd                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ddiv                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
                                                   ../obj/ability.o
-__aeabi_dmul                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
-__aeabi_drsub                                     d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_dsub                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_f2d                                       d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_dmul                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+__aeabi_drsub                                     f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_dsub                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_f2d                                       f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
                                                   ../obj/ability.o
-__aeabi_i2d                                       d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_l2d                                       d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_ui2d                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__aeabi_ul2d                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_i2d                                       f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_l2d                                       f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ui2d                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ul2d                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
 __bss_end__                                       ../obj/startup_hc32f460.o
 __bss_end_ret_ram__                               ../obj/startup_hc32f460.o
 __bss_start__                                     ../obj/startup_hc32f460.o
@@ -1451,14 +1418,14 @@ __data_end__                                      ../obj/startup_hc32f460.o
 __data_end_ret_ram__                              ../obj/startup_hc32f460.o
 __data_start__                                    ../obj/startup_hc32f460.o
 __data_start_ret_ram__                            ../obj/startup_hc32f460.o
-__divdf3                                          d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+__divdf3                                          f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
 __etext                                           ../obj/startup_hc32f460.o
 __etext_ret_ram                                   ../obj/startup_hc32f460.o
-__extendsfdf2                                     d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__floatdidf                                       d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__floatsidf                                       d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__floatundidf                                     d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__floatunsidf                                     d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__extendsfdf2                                     f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatdidf                                       f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatsidf                                       f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatundidf                                     f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatunsidf                                     f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
 __msl_memclr                                      ../obj/mix_std_lib.o
                                                   ../obj/rs485.o
 __msl_memcmp                                      ../obj/mix_std_lib.o
@@ -1472,16 +1439,16 @@ __msl_strlen                                      ../obj/mix_std_lib.o
 __msl_strstr                                      ../obj/mix_std_lib.o
 __mslex_usart_write                               ../obj/rs485.o
                                                   ../obj/mix_std_lib.o
-__muldf3                                          d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
-__subdf3                                          d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-__truncdfsf2                                      d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+__muldf3                                          f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+__subdf3                                          f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+__truncdfsf2                                      f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
 _pid_update                                       ../obj/main.o
 _rx_execute                                       ../obj/rs485.o
 _sys_delay_us                                     ../obj/system_hc32f460.o
 ability_init                                      ../obj/ability.o
-                                                  ../obj/main.o
                                                   ../obj/lr.o
 ability_robote_init                               ../obj/ability.o
+                                                  ../obj/main.o
                                                   ../obj/i2c_slave.o
 c_queue_rx_buf_queue_t_empty                      ../obj/rs485.o
 c_queue_rx_buf_queue_t_front                      ../obj/rs485.o
@@ -1511,9 +1478,11 @@ encoder_init                                      ../obj/encoder.o
 hex_char                                          ../obj/mix_std_lib.o
 i2c_master_cmd_and_read                           ../obj/i2cmaster.o
 i2c_master_init                                   ../obj/i2cmaster.o
+                                                  ../obj/main.o
 i2c_master_read_status                            ../obj/i2cmaster.o
 i2c_master_send_cmd                               ../obj/i2cmaster.o
 i2c_master_test                                   ../obj/i2cmaster.o
+                                                  ../obj/main.o
 i2c_slave_get_status                              ../obj/i2c_slave.o
 i2c_slave_get_status_changed                      ../obj/i2c_slave.o
 i2c_slave_init                                    ../obj/i2c_slave.o
@@ -1521,7 +1490,6 @@ i2c_slave_ir_process                              ../obj/i2c_slave.o
 i2c_slave_poll                                    ../obj/i2c_slave.o
 i2c_slave_set_status                              ../obj/i2c_slave.o
 inquire                                           ../obj/lr.o
-                                                  ../obj/main.o
 io_init                                           ../obj/io.o
                                                   ../obj/main.o
 lr_data                                           ../obj/lr.o
@@ -1529,15 +1497,13 @@ lr_get_data                                       ../obj/lr.o
                                                   ../obj/i2c_slave.o
 lr_init                                           ../obj/lr.o
                                                   ../obj/main.o
-                                                  ../obj/i2c_slave.o
 lr_nec                                            ../obj/lr.o
                                                   ../obj/i2c_slave.o
 lr_receive_init                                   ../obj/lr.o
                                                   ../obj/main.o
-                                                  ../obj/i2c_slave.o
 main                                              ../obj/main.o
                                                   ../obj/startup_hc32f460.o
-memcpy                                            d:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+memcpy                                            f:/program files (x86)/arm gnu toolchain arm-none-eabi/12.3 rel1/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
                                                   ../obj/rs485.o
 moto_current_zero                                 ../obj/moto.o
 moto_get_current                                  ../obj/moto.o
@@ -1617,7 +1583,6 @@ sys_tick_init                                     ../obj/system_hc32f460.o
 sys_tick_msb                                      ../obj/system_hc32f460.o
 temperature_get                                   ../obj/hot.o
 temperature_overload                              ../obj/hot.o
-                                                  ../obj/main.o
 test                                              ../obj/i2cmaster.o
 u32ICG                                            ../obj/system_hc32f460.o
 uart_init                                         ../obj/uart.o
@@ -1625,9 +1590,7 @@ uart_init                                         ../obj/uart.o
 voltage_get                                       ../obj/ability.o
 voltage_get_adc                                   ../obj/ability.o
 voltage_init                                      ../obj/ability.o
-                                                  ../obj/main.o
 voltage_overload                                  ../obj/ability.o
-                                                  ../obj/main.o
 ws2812_idle                                       ../obj/ws2812.o
 ws2812_init                                       ../obj/ws2812.o
 ws2812_reset                                      ../obj/ws2812.o

@@ -100,6 +100,9 @@ void io_init(void)
 	CM_GPIO -> PFSRA9 = 48u; //I2C1_SDA
 	//I2C1_SCL
 	CM_GPIO -> PFSRA8 = 49u; //I2C1_SCL
+
+
+
 	
 
 
